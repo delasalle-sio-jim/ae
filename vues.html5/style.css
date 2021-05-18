@@ -1,0 +1,853 @@
+﻿/* Feuille de styles de la version HTML5 pour terminaux fixes */
+/* Modifié le 06/06/2016 par Killian BOUTIN */
+
+/* ----------------- Mise en forme de la structure générale -------------------- */
+
+* {
+  margin: 0; padding: 0;
+}
+
+/* style de la division id="page" */
+div#page {
+	/* largeur, centrage avec des marges auto, padding nul, bordure noire, alignement gauche */
+	width: 800px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	padding: 0;
+	border: #000 1px solid; 
+	text-align: left;
+	
+	/* coins arrondis avec un rayon de 15 pixels */
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	-o-border-radius: 15px;
+	-ms-border-radius: 15px;
+	-khtml-border-radius: 15px;
+	border-radius: 15px;
+	
+	/* fond avec un dégradé de couleur (blanc en haut, gris léger en bas) */
+	background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(210, 210, 210));
+	background: -webkit-gradient(linear, left top, left bottom, from(rgb(255, 255, 255)), to(rgb(210, 210, 210)));
+	background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(210, 210, 210));
+}
+
+/* style de la balise <body> */
+body {
+	/* police, marges nulles et padding de 30 pixels en haut */
+	font: 0.8em Verdana, Arial, Helvetica, sans-serif;
+	margin: 0;
+	padding: 10px 0 0 0;
+	
+	/* fond avec un dégradé de couleur (blanc en haut, gris en bas) */
+	background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(210, 210, 210));
+	background: -webkit-gradient(linear, left top, left bottom, from(rgb(255, 255, 255)), to(rgb(210, 210, 210)));
+	background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(210, 210, 210));
+	
+	/* pour permettre au dégradé d'agir sur l'ensemble de l'écran */
+	background-attachment: fixed;
+}
+
+/* style de la page HTML */
+html {
+	/* la page doit occuper toute la hauteur du navigateur */
+	height: 100%;
+}
+
+/* style de la division id="footer" */
+div#footer {
+	/* hauteur, padding, marge en haut, couleur d'arrière-plan */
+	height: 36px;
+	padding: 0; 
+	margin: 20px 0 0 0;
+	background-color: #00A3E4;
+	
+	/* coins arrondis en bas uniquement */
+	-moz-border-radius: 0 0 15px 15px;
+	-webkit-border-radius: 0 0 15px 15px;
+	-o-border-radius: 0 0 15px 15px;
+	-ms-border-radius: 0 0 15px 15px;
+	-khtml-border-radius: 0 0 15px 15px;
+	border-radius: 0 0 15px 15px;
+}
+
+/* style du texte de la division id="footer" */
+div#footer p {
+	padding: 7px 0 0 0;
+	text-align: center;
+	font-weight: bold; 
+	font-size: 1.2em;
+	color: #fff; 	
+}
+
+/* style de la division id="content" */
+div#content {
+	padding: 0px 40px 0 40px;
+	margin: 0;
+}
+
+/* style pour la carte d'affichage du lieu de la soirée dans VoirDetailsSoiree */
+div#map_canvas{
+	position: absolute;
+	margin : -180px 0 0 420px;
+	height: 180px;
+	width: 300px;
+}
+
+/* ----------------- Mise en forme du menu horizontal -------------------- */
+
+/* style de la division id="header" */
+div#header {
+	padding: 0; 
+	margin: 0;
+}
+
+/* style de la division id="header-menu" */
+div#header-menu {
+	/* hauteur, padding, marge, couleur d'arrière-plan */
+	height: 36px;
+	padding: 0;
+	margin: 0;
+	background: #00A3E4;
+	
+	
+	/* coins arrondis en haut uniquement */
+	-moz-border-radius: 15px 15px 0 0;
+	-webkit-border-radius: 15px 15px 0 0;
+	-o-border-radius: 15px 15px 0 0;
+	-ms-border-radius: 15px 15px 0 0;
+	-khtml-border-radius: 15px 15px 0 0;
+	border-radius: 15px 15px 0 0;
+}
+
+/* style de la liste <ul id="menu-horizontal"> */
+ul#menu-horizontal {
+	padding: 0;
+	height: 36px;
+	list-style-type: none; 
+}
+
+/* style des éléments <li> de la liste <ul id="menu-horizontal"> */
+ul#menu-horizontal li {
+	padding: 0;
+	margin: 0;
+	height: 36px;
+	float: left; 
+	text-align: center
+}
+
+/* style des liens hypertextes contenus dans les éléments <li> de la liste <ul id="menu-horizontal"> */
+ul#menu-horizontal li a {
+	border-right: #fff 2px solid; 
+	display: block; 
+	font-weight: bold; 
+	font-size: 1.2em; 
+	width: 200px; 
+	color: #fff; 
+	line-height: 36px; 
+	text-decoration: none
+}
+
+/* modification de couleur au survol de la souris */
+ul#menu-horizontal li a:hover {
+	background: #0b4c8e;
+}
+
+/* ajout d'un coin arrondi (en haut et à gauche) au premier lien uniquement lors du survol de la souris */
+ul#menu-horizontal li:first-child a:hover {
+	-moz-border-radius: 15px 0 0 0;
+	-webkit-border-radius: 15px 0 0 0;
+	-o-border-radius: 15px 0 0 0;
+	-ms-border-radius: 15px 0 0 0;
+	-khtml-border-radius: 15px 0 0 0;
+	border-radius: 15px 0 0 0;
+}
+
+/* style des liens hypertextes contenus dans les éléments <li id="reseau"> de la liste <ul id="menu-horizontal"> */
+ul#menu-horizontal li#reseau a {
+	padding-top: 5px;
+	width: 50px;
+	border-left: #fff 2px solid; 
+	border-right: none; 
+}
+
+/* modification de couleur au survol de la souris des li pour reseaux sociaux */
+ul#menu-horizontal li#reseau a:hover {
+	background: #0b4c8e;
+	height: 31px; /* On enleve les 5 pixels du "padding-top" qui aligne l'icone au centre du header */
+}
+
+/* ajout d'un coin arrondi (en haut et à droite) au dernier lien uniquement lors du survol de la souris */
+ul#menu-horizontal li#reseau:last-child a:hover {
+	-moz-border-radius: 0 15px 0 0;
+	-webkit-border-radius: 0 15px 0 0;
+	-o-border-radius: 0 15px 0 0;
+	-ms-border-radius: 0 15px 0 0;
+	-khtml-border-radius: 0 15px 0 0;
+	border-radius: 0 15px 0 0;
+}
+
+
+/* ----------------- Positionnement des images -------------------- */
+
+/* style de la division id="header-logos" */
+div#header-logos {
+	padding: 10px 0 0 0; 
+	margin: 0;
+}
+
+/* style de l'image id="logo-gauche" */
+img#logo-gauche {
+	padding: 0 40px 0 40px;	
+	width: 200px;
+	height: 70px;
+}
+
+/* style de l'image id="logo-droite" */
+img#logo-droite {
+	padding: 0 40px 0 40px;	
+	width: 400px;
+	height: 70px;
+}
+
+/* ----------------- Mise en forme des titres et paragraphes -------------------- */
+
+/* style des balises <h2> de la division <div id="content"> */
+div#content h2 {
+	/* marge supérieure */
+	margin-top: 10px;
+	
+	/* padding à gauche pour pouvoir y placer une image */
+	padding-left: 35px;
+	
+	/* taille et couleur de la police, et hauteur de ligne */
+	font-size: 1.4em;
+	color: #0b4c8e;
+	line-height: 25px;
+	cursor: default;
+	
+	/* ajout d'une image à gauche */
+	background: url(../images/puce.png) no-repeat left bottom;
+	
+	/* ajout d'une bordure au-dessus et en-dessous */
+	border-top: #0b4c8e 1px solid;
+	border-bottom: #0b4c8e 1px solid;
+}
+
+/* style des balises <h3> de la division <div id="content"> */
+div#content h3 {
+	/* marges */
+	margin: 10px 0 10px 0;
+	
+	/* taille et couleur de la police */
+	font: 1.2em Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #0b4c8e;
+	cursor: default;
+}
+
+div#content h3.titre_inscription{
+	margin-bottom: -12px;
+	text-align: center;
+}
+
+/* style des balises <p> de la division <div id="content"> */
+div#content p {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	/*line-height: 1.2em; */
+	text-align: justify;
+}
+
+/* style des balises <ul> de la division <div id="content"> */
+div#content ul {
+	margin: 5px 0 0 40px;
+	line-height: 1.2em; 
+	text-align: justify;
+}
+
+/* style des balises <a> de la division <div id="content"> */
+div#content a {
+	color: #00a3e4;
+	font-weight: bold;
+}
+
+/* style des balises <a> de la division <div id="content"> lors du survol par la souris */
+div#content a:hover {
+	color: #0b4c8e;
+	font-weight: bold;
+}
+
+label#boutonAnnulerInscription{
+	width: 210px;
+}
+
+
+
+/* ----------------- Mise en forme du menu vertical -------------------- */
+
+/* style de la <div id="menu-vertical"> */
+div#menu-vertical {
+	/* padding en haut et en bas */
+	padding: 20px 0 20px 0;
+	width: 450px;
+	height: 330px;
+	margin: 0 auto;
+}
+
+/* style des titres <h3> de la <div id="menu-vertical"> */
+div#menu-vertical h3 {
+	margin: 0;
+	padding: 5px;
+	
+	/* taille et couleur de la police */
+	font: 1.2em Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #0b4c8e;
+}
+
+/* style des balises <a> contenues dans les titres <h3> de la <div id="menu-vertical"> */
+div#menu-vertical h3 a {
+	text-decoration: none;
+	color: grey;
+}
+
+/* style des divisions de classe "menu" */
+div#menu-vertical .menu {
+	/* border-bottom: 1px solid #333; */
+}
+
+/* style des <div> qui suivent immédiatement un <h3> */
+div#menu-vertical h3 + div {
+	/* hauteur nulle pour fermer la boîte */
+	height: 0;
+	/* masquage du débordement */
+	overflow: hidden;
+}
+
+/* style des <div> qui suivent immédiatement un <h3> ciblées (target) par les liens hypertextes */
+div#menu-vertical :target h3 + div {
+	/* hauteur de la boîte */
+	height: auto;
+}	
+
+/* transformation en boutons des liens hypertextes <a> avec l'attribut class="bouton-menu" */
+div#menu-vertical a.bouton-menu {
+	/* police, couleur et alignement du texte, style du lien */
+	font: 1.1em Arial, Helvetica, sans-serif;
+	color: #0b4c8e;
+	text-align: center;
+	text-decoration: none;
+	font-weight: bold;
+
+	/* ombre portée du texte du bouton */
+	text-shadow: 0 1px 0 #fff;
+		
+	/* dimensions, margin, padding, type d'affichage, bordure */
+	width: 350px;
+	margin: 10px auto;
+	padding: 5px;
+	display: block;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	
+	/* coins arrondis */
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-o-border-radius: 7px;
+	-ms-border-radius: 7px;
+	-khtml-border-radius: 7px;
+	border-radius: 7px;
+	
+	/* fond avec un dégradé de couleur (blanc en haut, gris en bas) */
+	background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(220, 220, 220));
+	background: -webkit-gradient(linear, right top, right bottom, from(rgb(255, 255, 255)), to(rgb(220, 220, 220)));
+	background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(220, 220, 220));
+	
+	/* ombre portée du bouton */
+	-webkit-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
+	-o-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
+	box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* modification au survol des liens hypertextes <a> avec l'attribut class="bouton-menu" */
+div#menu-vertical a.bouton-menu:hover {
+	/* fond avec un dégradé de couleur (blanc en haut, gris plus soutenu en bas) */
+	background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(200, 200, 200));
+	background: -webkit-gradient(linear, right top, right bottom, from(rgb(255, 255, 255)), to(rgb(200, 200, 200)));
+	background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(200, 200, 200));
+}
+
+/* ----------------- Mise en forme des tableaux -------------------- */
+
+/* styles des tableaux */
+table {
+	/* pas d'espace entre les cellules */
+	border-spacing: 0;
+	
+	/* largeur, marges et centrage horizontal */
+	width: 700px;
+	margin: 30px auto 30px auto;
+	
+	/* arrière-plan */
+	background-color: rgb(230, 230, 230);
+}
+
+/* styles des tableaux ayant la propriété class="tableau" */
+.tableau {
+	/* bordure pour l'ensemble du tableau */
+	border: 1px solid #0b4c8e;
+	
+	/* coins arrondis */
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	
+	/* ombre légère */
+	-webkit-box-shadow: 1px 3px 3px #ccc;
+	-moz-box-shadow: 1px 3px 3px #ccc;
+	box-shadow: 1px 3px 3px #ccc;
+}
+
+/* le style de class="inscription" est placé avant le style de class="tableau" pour que les modifications des couleurs n'affectent pas la première et la dernière ligne (avec even et odd) */
+
+/* style des lignes paires du tableau de la vue "VueVoirListeInscrits */
+.inscription tr:nth-child(even){
+    background: #e6e6e6;
+}
+
+/* style au survol des lignes paires du tableau */
+.inscription tr:nth-child(even):hover {
+	background-color: #d9d9d9;
+}
+
+/* style des lignes impaires du tableau de la vue "VueVoirListeInscrits */
+.inscription tr:nth-child(odd){
+    background: #cccccc;
+}
+
+/* style au survol des lignes impaires du tableau */
+.inscription tr:nth-child(odd):hover {
+	background-color: #bfbfbf;
+}
+
+/* style des td du tableau de la vue "VueVoirListeInscrits */
+.inscriptionEleve td{
+	width: 25%;
+}
+
+/* styles des cellules des tableaux ayant la propriété class="tableau" */
+.tableau td, .tableau th {
+	/* les cellules sont encadrés en haut et à gauche */
+	border-left: 1px solid #0b4c8e;
+	border-top: 1px solid #0b4c8e;
+	padding: 5px;
+	text-align: center;
+}
+
+/* styles des premières cellules <th> et <td> à gauche */
+.tableau td:first-child, .tableau th:first-child {
+	/* l'encadrement gauche des cellules de gauche est supprimé */
+	border-left: none;
+}
+
+/* styles des cellules <th> */
+.tableau th {
+	/* l'encadrement supérieur des cellules <th> est supprimé */
+	border-top: none;
+}
+
+/* styles des premières cellules <td> à gauche */
+.tableau td:first-child {
+	/* alignement à gauche dans la première colonne */
+	text-align: left;
+	padding-left: 10px;
+}
+
+/* styles de la première et de la dernière ligne */
+.tableau th, .tableau tr:last-child {
+	font-weight: bold; 
+	font-size: 1em;
+
+	/* fond avec un dégradé de couleur (blanc en haut, gris en bas) */
+	background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(210, 210, 210));
+	background: -webkit-gradient(linear, left top, left bottom, from(rgb(255, 255, 255)), to(rgb(210, 210, 210)));
+	background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(210, 210, 210));
+}
+
+/* styles de la première cellule de la première ligne */
+.tableau th:first-child {
+	/* coin arrondi en haut et à gauche */
+	-moz-border-radius: 10px 0 0 0;
+	-webkit-border-radius: 10px 0 0 0;
+	border-radius: 10px 0 0 0;
+}
+
+/* styles de la dernière cellule de la première ligne */
+.tableau th:last-child {
+	/* coin arrondi en haut et à droite */
+	-moz-border-radius: 0 10px 0 0;
+	-webkit-border-radius: 0 10px 0 0;
+	border-radius: 0 10px 0 0;
+}
+
+/* styles de la première cellule de la dernière ligne */
+.tableau tr:last-child td:first-child {
+	/* coin arrondi en bas et à gauche */
+	-moz-border-radius: 0 0 0 10px;
+	-webkit-border-radius: 0 0 0 10px;
+	border-radius: 0 0 0 10px;
+}
+
+/* styles de la dernière cellule de la dernière ligne */
+.tableau tr:last-child td:last-child {
+	/* coin arrondi en bas et à droite */
+	-moz-border-radius: 0 0 10px 0;
+	-webkit-border-radius: 0 0 10px 0;
+	border-radius: 0 0 10px 0;
+}
+
+/* ----------------- Mise en forme des formulaires -------------------- */
+
+/* style des balises <p> contenus dans un formulaire de la division <div id="content"> */
+div#content form p {
+	padding: 0;
+	margin: 5px 0 0 0;
+}
+input, select {
+	padding-left: 5px;
+	border: solid 1px grey;
+	width: 400px;
+	display: inline-block;
+	height: 20px;
+	
+	/* coins arrondis */
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	border-radius: 5px;
+}
+select {
+	width: 406px;
+}
+textarea {
+	padding-left: 5px;
+	border: solid 1px grey;
+	width: 400px;
+	display: inline-block;
+	
+	/* coins arrondis */
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	border-radius: 5px;
+}
+label {
+	width: 200px;
+	text-align: left;
+	display: inline-block;
+}
+.label2 {
+	position: relative;
+	text-align: left;
+	width: 75%;
+	height: 100%;
+	margin-top: 5px;
+}
+
+.labelImportant {
+	color: red;
+	position: absolute;
+	text-align: left;
+	width: 75%;
+	height: 100%;
+	margin-top: 5px;
+	
+}
+#txtAdrMailAdmin2 {	
+	margin : 1% 0 0 10%;
+}
+
+/* input[type="checkbox"] pour la checkbox de ReglementsRemboursements en particulier */
+input[type="checkbox"] {
+	width: 20px;
+	height: 15px;
+	margin-left: 0px;
+	margin-top: 0px;
+}
+input[type=radio] {
+	width: 25px;
+}
+input[type=radio]:first-child {
+	margin-left: 200px;
+}
+input[type=submit] {
+	font-weight: bold;
+	border: solid 1px grey;
+	width: 230px;
+	height: 25px;
+	margin-left: 300px;
+	margin-top: 0px;
+	
+	/* coins arrondis */
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-o-border-radius: 7px;
+	-ms-border-radius: 7px;
+	-khtml-border-radius: 7px;
+	border-radius: 7px;
+	
+	/* fond avec un dégradé de couleur (blanc en haut, gris léger en bas) */
+	background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(210, 210, 210));
+	background: -webkit-gradient(linear, right top, right bottom, from(rgb(255, 255, 255)), to(rgb(210, 210, 210)));
+	background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(210, 210, 210));
+}
+
+/* gestion de la validité des données saisies avec une icone rouge ou verte à droite de la zone */
+input[type=text]:invalid , input[type=email]:invalid, input[type=password]:invalid, textarea:invalid {
+	background: #fff url(../images/rond-rouge.png) no-repeat 99% center;
+}
+input[type=text]:valid , input[type=email]:valid, input[type=password]:valid, textarea:valid {
+	background: #fff url(../images/rond-vert.png) no-repeat 99% center;
+	display: inline-block;
+}
+
+/* ------------------------ styles liés au système d'affichage de messages ---------------------------- */
+
+/* mise en forme de la boite d'affichage du message */
+.classe_message > div {
+	width: 500px;
+	background: #fff;
+	position: relative;
+	margin: 10% auto;
+	padding: 30px;
+	text-shadow: 0 1px 0 #fff;
+
+	/* coins arrondis */
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-o-border-radius: 7px;
+	-ms-border-radius: 7px;
+	-khtml-border-radius: 7px;
+	border-radius: 7px;
+	
+	/* ombre portée */
+	-webkit-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9);
+	-moz-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9);
+	-o-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9);
+	box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9);
+
+	/* fond avec un dégradé de couleur (blanc en haut, gris en bas) */	
+	background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(210, 210, 210));
+	background: -webkit-gradient(linear, right top, right bottom, from(rgb(255, 255, 255)), to(rgb(210, 210, 210)));
+	background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(210, 210, 210));
+}
+
+/* style du titre du message d'avertissement et son icone */
+#affichage_message h2.classe_avertissement {
+	padding-left: 50px;
+	line-height: 32px;
+	background: url(../images/avertissement.png) no-repeat left bottom;
+	color: #0b4c8e;
+}
+
+/* style du titre du message d'information et son icone */
+#affichage_message h2.classe_information {
+	padding-left: 50px;
+	line-height: 32px;
+	background: url(../images/information.png) no-repeat left bottom;
+	color: #0b4c8e;
+}
+
+/* style du message */
+#affichage_message p.classe_texte_message {
+	padding-left: 50px;
+	font-size: 1.2em;
+}
+
+/* style du lien de fermeture */
+.classe_message a {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	color: #000;
+}
+
+/* le conteneur qui va recouvrir la page */
+.classe_message {
+	/* on occupe tout l'espace */
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	/* un fond noir avec une transparence de 30% */
+	background: rgba(0, 0, 0, 0.3);
+	/* le conteneur est placé sur la page */
+	z-index: 10000;
+	
+	/* utilisation de la transformation de transparence à l'ouverture */
+	-webkit-transition: opacity 500ms ease-in;
+	-moz-transition: opacity 500ms ease-in;
+	-o-transition: opacity 500ms ease-in;
+	transition: opacity 500ms ease-in;
+	
+	/* au chargement de la page, le conteneur est transparent */
+	opacity: 0;
+	/* et on ne peut pas cliquer sur ses éléments */
+	pointer-events: none;
+}
+
+/* quand le conteneur est ciblé, il devient opaque */
+.classe_message:target {
+	opacity: 1;
+	/* et on peut maintenant cliquer sur ses éléments */
+	pointer-events: auto;
+}
+
+/* animation à l'ouverture de la boîte de message */
+@-webkit-keyframes animation_ouverture {
+	0% { -webkit-transform: scale3d(0.1, 0.1, 1); -webkit-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9); }
+	55% { -webkit-transform: scale3d(1.08, 1.08, 1); -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0); }
+	75% { -webkit-transform: scale3d(0.95, 0.95, 1); -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.9); }
+	100% { -webkit-transform: scale3d(1, 1, 1); -webkit-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9); }	
+}
+@-moz-keyframes animation_ouverture {
+	0% { -moz-transform: scale3d(0.1, 0.1, 1); -moz-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9); }
+	55% { -moz-transform: scale3d(1.08, 1.08, 1); -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0); }
+	75% { -moz-transform: scale3d(0.95, 0.95, 1); -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.9); }
+	100% { -moz-transform: scale3d(1, 1, 1); -moz-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9); }	
+}
+@-o-keyframes animation_ouverture {
+	0% { -o-transform: scale3d(0.1, 0.1, 1); -o-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9); }
+	55% { -o-transform: scale3d(1.08, 1.08, 1); -o-box-shadow: 0 10px 20px rgba(0, 0, 0, 0); }
+	75% { -o-transform: scale3d(0.95, 0.95, 1); -o-box-shadow: 0 0 20px rgba(0, 0, 0, 0.9); }
+	100% { -o-transform: scale3d(1, 1, 1); -o-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9); }	
+}
+@keyframes animation_ouverture {
+	0% { transform: scale3d(0.1, 0.1, 1); box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9); }
+	55% { transform: scale3d(1.08, 1.08, 1); box-shadow: 0 10px 20px rgba(0, 0, 0, 0); }
+	75% { transform: scale3d(0.95, 0.95, 1); box-shadow: 0 0 20px rgba(0, 0, 0, 0.9); }
+	100% { transform: scale3d(1, 1, 1); box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9); }	
+}
+
+/* declenchement de l'animation d'ouverture */
+.classe_message:target > div {
+	-webkit-animation: animation_ouverture 1000ms linear;
+	-moz-animation: animation_ouverture 1000ms linear;
+	-o-animation: animation_ouverture 1000ms linear;
+	animation: animation_ouverture 1000ms linear;
+}
+
+/* animation à la fermeture de la boîte de message */
+@-webkit-keyframes animation_fermeture {
+	0% { -webkit-transform: scale3d(1, 1, 1); }
+	100% { -webkit-transform: scale3d(0.1, 0.1, 1); }
+}
+@-moz-keyframes animation_fermeture {
+	0% { -moz-transform: scale3d(1, 1, 1); }
+	100% { -moz-transform: scale3d(0.1, 0.1, 1); }
+}
+@-o-keyframes animation_fermeture {
+	0% { -o-transform: scale3d(1, 1, 1); }
+	100% { -o-transform: scale3d(0.1, 0.1, 1); }
+}
+@keyframes animation_fermeture {
+	0% { transform: scale3d(1, 1, 1); }
+	100% { transform: scale3d(0.1, 0.1, 1); }
+}
+
+/* déclenchement de l'animation de fermeture */
+.classe_message > div {
+	-webkit-animation: animation_fermeture 500ms linear;
+	-moz-animation: animation_fermeture 500ms linear;
+	-o-animation: animation_fermeture 500ms linear;
+	animation: animation_fermeture 500ms linear;
+}
+
+/* ---------------- effet d'accordéon ------------------- */
+
+.accordion {
+  width: 380px;
+  margin: 20px auto;
+}
+.accordion h1, h2, h3, h4 {
+  cursor: pointer;
+}
+.accordion h2, h3, h4 {
+  font-family: "News Cycle";
+}
+.accordion h1 {
+  padding: 15px 20px;
+  background-color: #333;
+  font-family: Lobster;
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #1abc9c;
+}
+.accordion h1:hover {
+  color: #4afcdc;
+}
+.accordion h1:first-child {
+  border-radius: 10px 10px 0 0;
+}
+.accordion h1:last-of-type {
+  border-radius: 0 0 10px 10px;
+}
+.accordion h1:not(:last-of-type) {
+  border-bottom: 1px dotted #1abc9c;
+}
+.accordion div, .accordion p {
+  display: none;
+}
+.accordion h2 {
+  padding: 5px 25px;
+  background-color: #1abc9c;
+  font-size: 1.1rem;
+  color: #333;
+}
+.accordion h2:hover {
+  background-color: #09ab8b;
+}
+.accordion h3 {
+  padding: 5px 30px;
+  background-color: #b94152;
+  font-size: .9rem;
+  color: #ddd; 
+}
+.accordion h3:hover {
+  background-color: #a93142;
+}
+.accordion h4 {
+  padding: 5px 35px;
+  background-color: #ffc25a;
+  font-size: .9rem;
+  color: #af720a; 
+}
+.accordion h4:hover {
+  background-color: #e0b040;
+}
+.accordion p {
+  padding: 15px 35px;
+  background-color: #ddd;
+  font-family: "Georgia";
+  font-size: .8rem;
+  color: #333;
+  line-height: 1.3rem;
+}
+.accordion .opened-for-codepen {
+  display: block;
+}
+
+/* ------------------------ zone utile ??? ---------------------- */
+.lien {
+	position : relative;
+	text-align : left;
+	width: 75%;
+	height : 100%;
+	margin : 1% 0 0 10%;
+}
+/* fin de la zone utile ??? */
