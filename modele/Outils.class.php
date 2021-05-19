@@ -200,19 +200,48 @@ class Outils
 		return ($jour . "/" . $mois . "/" . $an);		// on les reconcatène dans un ordre différent
 	}
 		
-	// envoie un mail à un destinataire
+// 	// envoie un mail à un destinataire
+// 	// retourne true si envoi correct, false en cas de problème d'envoi
+// 	public static function  envoyerMail ($adresseDestinataire, $sujet, $message, $adresseEmetteur)
+// 	{	// utilisation d'une expression régulière pour vérifier si c'est une adresse Gmail :
+// 		if ( preg_match ( "#^.+@gmail\.com$#" , $adresseDestinataire) == true)
+// 		{	// on commence par enlever les points dans l'adresse gmail car ils ne sont pas pris en compte
+// 			$adresseDestinataire = str_replace(".", "", $adresseDestinataire);
+// 			// puis on remet le point de "@gmail.com"
+// 			$adresseDestinataire = str_replace("@gmailcom", "@gmail.com", $adresseDestinataire);
+// 		}
+// 		// envoi du mail avec la fonction mail de PHP
+// 		$ok = mail($adresseDestinataire , utf8_decode($sujet) , utf8_decode($message), "From: " . $adresseEmetteur);
+// 		return $ok;
+// 	}
+	
+	// La fonction envoyerMail ($adresseDestinataire, $sujet, $message, $adresseEmetteur) envoie un mail à un destinataire
+	// elle utilise le serveur le serveur OVH (sio.lyceedelassale.fr) pour envoyer le mail, en passant par un service web
 	// retourne true si envoi correct, false en cas de problème d'envoi
+	// Dernière mise à jour : 6/11/2018 par JM CARTRON
 	public static function  envoyerMail ($adresseDestinataire, $sujet, $message, $adresseEmetteur)
-	{	// utilisation d'une expression régulière pour vérifier si c'est une adresse Gmail :
-		if ( preg_match ( "#^.+@gmail\.com$#" , $adresseDestinataire) == true)
-		{	// on commence par enlever les points dans l'adresse gmail car ils ne sont pas pris en compte
-			$adresseDestinataire = str_replace(".", "", $adresseDestinataire);
-			// puis on remet le point de "@gmail.com"
-			$adresseDestinataire = str_replace("@gmailcom", "@gmail.com", $adresseDestinataire);
-		}
-		// envoi du mail avec la fonction mail de PHP
-		$ok = mail($adresseDestinataire , utf8_decode($sujet) , utf8_decode($message), "From: " . $adresseEmetteur);
-		return $ok;
+	{
+	    // transformation du message s'il contient des "&"
+	    $message = str_replace("&", "$$", $message);
+	    
+	    // préparation de l'URL du service web avec ses paramètres
+	    $urlService = "http://sio.lyceedelasalle.fr/tracegps/services/ServiceEnvoyerMail.php";
+	    $urlService .= "?adresseDestinataire=" . $adresseDestinataire;
+	    $urlService .= "&sujet=" . $sujet;
+	    $urlService .= "&message=" . $message;
+	    $urlService .= "&adresseEmetteur=" . $adresseEmetteur;
+	    
+	    // création d'un objet DOMDocument pour traiter un flux de données XML
+	    $dom = new DOMDocument();
+	    // chargement des données à partir de l'url du service web
+	    if ( ! $dom->load($urlService )) return false;
+	    // récupération du noeud XML correspondant à la balise <reponse>
+	    $lesNoeuds = $dom->getElementsByTagName("reponse");
+	    foreach ($lesNoeuds as $unNoeud)
+	    {
+	        if ($unNoeud->nodeValue == "true") return true;
+	        else return false;
+	    }
 	}
 	
 	// crée un mot de passe aléatoire de 8 caractères (4 syllabes avec 1 consonne et 1 voyelle)
