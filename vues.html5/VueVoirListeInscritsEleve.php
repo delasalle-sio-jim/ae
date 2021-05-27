@@ -21,7 +21,7 @@
 				</ul>
 			</div>
 			<div id="header-logos">
-				<img src="images/Logo_DLS.gif" id="logo-gauche" alt="Lycée De La Salle (Rennes)" />
+				<img src="images/Logo_DLS.png" id="logo-gauche" alt="Lycée De La Salle (Rennes)" />
 				<img src="images/Intitules_bts_ig_sio.png" id="logo-droite" alt="BTS Informatique" />
 			</div>
 		</div>
