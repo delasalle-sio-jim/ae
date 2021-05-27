@@ -56,9 +56,9 @@
 								if ($dao->getInscriptionEleve($idEleve) != null AND $dao->getSoiree(true) != NULL){
 							?>
 							<p><a href="index.php?action=ModifierMonInscription" class="bouton-menu">Modifier ou annuler mon inscription</a></p>
-							<p><a href="https://docs.google.com/forms/d/1lPLMFwI0Eyhs5vH3neQKgRLKThXsDQAbzIdovHaPMVA/edit" class="bouton-menu" target="_blank">Choisissez votre menu</a>
 							<?php 
 							} ?>
+							<p><a href="https://docs.google.com/forms/d/1lPLMFwI0Eyhs5vH3neQKgRLKThXsDQAbzIdovHaPMVA/edit" class="bouton-menu" target="_blank">Choisissez votre menu</a>
 						</div>
 					</div>
 					
@@ -86,6 +86,7 @@
 						<h3><a href="#menu2">La soirée annuelle des anciens...</a></h3>
 						<div>
 							<p><a href="index.php?action=ModifierDetailsSoiree" class="bouton-menu">Modifier les infos sur la soirée</a></p>
+							<p><a href="index.php?action=AjouterUneSoiree" class="bouton-menu">Ajouter une soirée</a></p>
 							<p><a href="index.php?action=VoirListeInscritsAdmin" class="bouton-menu">Consulter la liste des inscriptions</a></p>
 							<!-- <p><a href="index.php?action=EnvoyerCourriel" class="bouton-menu">Envoyer un courriel</a></p> -->
 							<p><a href="index.php?action=ExporterDesDonnees" class="bouton-menu">Exporter des données</a></p>

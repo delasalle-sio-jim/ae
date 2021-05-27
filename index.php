@@ -155,6 +155,9 @@ switch($action){
 	case 'SupprimerCompteAdmin': {
 		include_once ('controleurs/CtrlSupprimerCompteAdmin.php'); break;
 	}
+	case'AjouterUneSoiree':{
+	    include_once('controleurs/CtrlAjouterUneSoiree.php');break;
+	}
 	
 	// toute autre tentative est automatiquement redirigée vers le contrôleur d'authentification	
 	default : {
