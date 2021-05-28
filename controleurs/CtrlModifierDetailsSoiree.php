@@ -6,6 +6,7 @@
 
 // connexion du serveur web à la base MySQL
 include_once ('modele/DAO.class.php');
+
 if ( $_SESSION['typeUtilisateur'] != 'administrateur') {
 	// si le demandeur n'est pas authentifié, il s'agit d'une tentative d'accès frauduleux
 	// dans ce cas, on provoque une redirection vers la page de connexion
@@ -25,12 +26,13 @@ if (! isset ($_POST ["btnModifier"])) {
 }
 else {
 	
+    
 	$urgence=false;
 	$uneSoiree = $dao->getSoiree($urgence);
 
 	// récupération des données postées
-	if ( empty ($_POST ["txtNomRestaurant"]) == true)  $unNomRestaurant = $uneSoiree->getNomRestaurant();  else   $unNomRestaurant = $_POST ["txtNomRestaurant"];
 	if ( empty ($_POST ["txtDate"]) == true)  $uneDate = $uneSoiree->getDateSoiree();  else   $uneDate = $_POST ["txtDate"];
+	if ( empty ($_POST ["txtNomRestaurant"]) == true)  $unNomRestaurant = $uneSoiree->getNomRestaurant();  else   $unNomRestaurant = $_POST ["txtNomRestaurant"];
 	if ( empty ($_POST ["txtAdresse"]) == true)  $uneAdresse = $uneSoiree->getAdresse();  else   $uneAdresse = $_POST ["txtAdresse"];
 	if ( empty ($_POST ["txtTarif"]) == true)  $unTarif = $uneSoiree->getTarif();  else   $unTarif = $_POST ["txtTarif"];
 	if ( empty ($_POST ["txtLienMenu"]) == true)  $unLienMenu = $uneSoiree->getLienMenu();  else   $unLienMenu = $_POST ["txtLienMenu"];

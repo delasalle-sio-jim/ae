@@ -58,6 +58,12 @@
 							<p><a href="index.php?action=ModifierMonInscription" class="bouton-menu">Modifier ou annuler mon inscription</a></p>
 							<?php 
 							} ?>
+							<?php 
+							     if ($dao->getLienMenu($uneSoiree) != null AND $dao->getSoiree(true) != NULL){ ?>
+							     <P><a href="$dao" class="bouton-menu" target="_blank">Choisissez votre menu</a></p>
+							<?php }?>
+							
+							
 							<p><a href="https://docs.google.com/forms/d/1lPLMFwI0Eyhs5vH3neQKgRLKThXsDQAbzIdovHaPMVA/edit" class="bouton-menu" target="_blank">Choisissez votre menu</a>
 						</div>
 					</div>
@@ -85,11 +91,11 @@
 					<div id="menu2" class="menu">
 						<h3><a href="#menu2">La soirée annuelle des anciens...</a></h3>
 						<div>
-							<p><a href="index.php?action=ModifierDetailsSoiree" class="bouton-menu">Modifier les infos sur la soirée</a></p>
-							<p><a href="index.php?action=AjouterUneSoiree" class="bouton-menu">Ajouter une soirée</a></p>
+							<p><a href="index.php?action=ModifierDetailsSoiree" class="bouton-menu">Ajouter ou modifier la soirée</a></p>
 							<p><a href="index.php?action=VoirListeInscritsAdmin" class="bouton-menu">Consulter la liste des inscriptions</a></p>
 							<!-- <p><a href="index.php?action=EnvoyerCourriel" class="bouton-menu">Envoyer un courriel</a></p> -->
 							<p><a href="index.php?action=ExporterDesDonnees" class="bouton-menu">Exporter des données</a></p>
+							<p><a href="index.php?action=UploaderDesDonnees" class="bouton-menu">Uploader des données</a></p>
 							<p><a href="index.php?action=ModifierReglementsRemboursements" class="bouton-menu">Mettre à jour règlements et remboursements</a></p>
 						</div>
 					</div>

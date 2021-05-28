@@ -725,11 +725,8 @@ class DAO
 			// exécution de la requête
 			$req->execute();
 			$uneLigne = $req->fetch(PDO::FETCH_OBJ);
-			// si la requête ne renvoie aucune ligne ou si la date de la soirée est passée
-			if( ! $uneLigne OR (date("Y-m-d") > ($uneLigne->dateSoiree)))
-				return null;
-			else
-			{	$unId = utf8_encode($uneLigne->id);
+			
+				$unId = utf8_encode($uneLigne->id);
 				$uneDateSoiree = utf8_encode($uneLigne->dateSoiree);
 				$unNomRestaurant = utf8_encode($uneLigne->nomRestaurant);
 				$uneAdresse = utf8_encode($uneLigne->adresse);
@@ -743,7 +740,7 @@ class DAO
 				$_SESSION['Soiree'] = serialize($uneSoiree);
 				// on retourne l'objet Soiree
 				return $uneSoiree;
-			}
+			
 		}
 	}	
 
@@ -778,6 +775,38 @@ class DAO
 		// exécution de la requête
 		$ok = $req->execute();
 		return $ok;
+	}	
+	
+	// ajoute une soirée dans la bdd et retourne true si l'ajout s'est effectué correctement, retourne false en cas de problème
+	// créé par Baptiste de Bailliencourt le 28/05/2021
+	//inspiré de modifierSoiree
+	public function ajouterSoiree($uneSoiree)
+	{
+	    // préparation de la requête
+	    $txt_req = "INSERT INTO ae_soirees(dateSoiree, nomRestarant, adresse, tarif, lienMmenu, latitude, longitude) Values(";
+	    $txt_req .= " ':dateSoiree',";
+	    $txt_req .= " ':nomRestaurant',";
+	    $txt_req .= " ':adresse',";
+	    $txt_req .= " ':tarif',";
+	    $txt_req .= " ':lienMenu',";
+	    $txt_req .= " ':latitude',";
+	    $txt_req .= " ':longitude' )";
+	    
+	    $req = $this->cnx->prepare($txt_req);
+	    
+	    // liaison de la requête et de ses paramètres
+	    $req->bindValue("dateSoiree", Outils::convertirEnDateUS($uneSoiree->getDateSoiree()), PDO::PARAM_STR);
+	    $req->bindValue("nomRestaurant",  stripslashes(utf8_decode($uneSoiree->getNomRestaurant())), PDO::PARAM_STR);
+	    $req->bindValue("adresse", stripslashes(utf8_decode($uneSoiree->getAdresse())), PDO::PARAM_STR);
+	    $req->bindValue("tarif" , utf8_decode($uneSoiree->getTarif()), PDO::PARAM_STR);
+	    $req->bindValue("lienMenu", utf8_decode($uneSoiree->getLienMenu()), PDO::PARAM_STR);
+	    $req->bindValue("latitude" , utf8_decode($uneSoiree->getLatitude()), PDO::PARAM_STR);
+	    $req->bindValue("longitude", utf8_decode($uneSoiree->getLongitude()), PDO::PARAM_STR);
+	    $req->bindValue("id", utf8_decode($uneSoiree->getId()), PDO::PARAM_STR);
+	    
+	    // exécution de la requête
+	    $ok = $req->execute();
+	    return $ok;
 	}	
 
 	// enregistre une inscription dans la bdd et retourne true si enregistrement effectué correctement, retourne false en cas de problème

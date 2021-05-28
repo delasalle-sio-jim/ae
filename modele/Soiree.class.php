@@ -24,7 +24,7 @@ class Soiree
 	// ----------------------------------------- Constructeur -----------------------------------------------
 	// ------------------------------------------------------------------------------------------------------
 	
-	public function Soiree($unId, $uneDateSoiree, $unNomRestaurant, $uneAdresse, $unTarif, $unLienMenu, $uneLatitude, $uneLongitude) {
+	public function __construct($unId, $uneDateSoiree, $unNomRestaurant, $uneAdresse, $unTarif, $unLienMenu, $uneLatitude, $uneLongitude) {
 		$this->id = $unId;
 		$this->dateSoiree = $uneDateSoiree;
 		$this->nomRestaurant = $unNomRestaurant;
