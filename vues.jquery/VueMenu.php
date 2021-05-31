@@ -43,11 +43,12 @@
 								<?php 
 								} ?>
 								<li><a href="index.php?action=VoirListeInscritsEleve" data-mini="true" data-role="button" data-ajax="false" data-transition="<?php echo $transition; ?>">Consulter la liste des inscriptions</a></li>
+								<li><a href="<?php echo $uneSoiree->getLienMenu()?>" data-mini="true" data-role="button" data-ajax="false" data-transition="<?php echo $transition; ?>">Choisissez votre menu</a></li>
 								<?php 
 									if ($dao->getInscriptionEleve($idEleve) != null AND $dao->getSoiree(true) != NULL){
 								?>
 								<li><a href="index.php?action=ModifierMonInscription" data-mini="true" data-role="button" data-ajax="false" data-transition="<?php echo $transition; ?>">Modifier ou annuler mon inscription</a></li>
-								<li><a href="https://docs.google.com/forms/d/e/1FAIpQLSfwxVcSUWF9kEIhJdNhvMR5hAI1ZNzs0rysRcLM5OPNbbEDqQ/viewform?usp=sf_link" data-mini="true" data-role="button" data-ajax="false" data-transition="<?php echo $transition; ?>">Choisissez votre menu</a></li>
+								
 								<?php 
 								} ?>
 							</ul>

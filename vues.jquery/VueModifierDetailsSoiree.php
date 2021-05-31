@@ -53,7 +53,7 @@
 						<input type="text" name="txtTarif" id="txtTarif" maxlength="8" placeholder="Tarif"  value="<?php if(isset($uneSoiree)) echo $uneSoiree->getTarif(); else echo "";?>" >
 					</p>
 					<p>
-						<label for="txtLienMenu"> Lien vers le menu ou vers le site du restaurant :</label>
+						<label for="txtLienMenu"> Lien du menu :</label>
 						<input type="text" name="txtLienMenu" id="txtLienMenu" maxlength="100" placeholder="Lien vers le menu du restaurant"  value="<?php if(isset($uneSoiree)) echo $uneSoiree->getLienMenu(); else echo "";?>" >
 					</p>
 					<p>

@@ -66,6 +66,11 @@ if ( isset ($_SESSION['cheminDesVues']) == false)
 else
 	 $cheminDesVues = $_SESSION['cheminDesVues'];
 
+// -------------------------------------
+// forçage provisoire en mode mobile
+ $cheminDesVues = "vues.jquery/";
+// -------------------------------------
+
 // ATTENTION ON TRICHE (EN DEVELOPPEMENT) POUR FORCER L'AFFICHAGE DE LA VERSION MOBILE SUR LE POSTE DE DEVELOPPEMENT :
 // $cheminDesVues = "vues.jquery/";	// pour forcer l'affichage de la version mobile (ligne à désactiver dans l'application finale)
 

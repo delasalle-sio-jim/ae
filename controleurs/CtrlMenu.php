@@ -21,5 +21,5 @@ if ($typeUtilisateur == "administrateur") {
 $nom = $utilisateur->getNom();
 $prenom = $utilisateur->getPrenom();
 $idEleve = $utilisateur->getId();
-
+$uneSoiree = $dao->getSoiree(true);
 include_once ($cheminDesVues . 'VueMenu.php');
