@@ -73,7 +73,7 @@ elseif (isset($_POST['btnEnvoyer']) == true )
         if ( empty ($_POST ["txtBouton"]) == true)  $unNomSurBouton = $unDocumentInitial->getNomSurBouton();  else   $unNomSurBouton = $_POST ["txtBouton"];
         
         if ( $_POST ["listeGroupes"] == 0)  $idGroupe = $unDocumentInitial->getIdGroupe(); else   $idGroupe = $_POST ["listeGroupes"];        
-        $unNomFichierInitial = $unDocumentInitial->getNomDuFichier();
+        $unNomFichierInitial = iconv("UTF-8", "CP1252", $unDocumentInitial->getNomDuFichier());
         if (($_FILES['fileDocument']["name"]) == "") $unNomFichier = $unNomFichierInitial; else $unNomFichier = $_FILES['fileDocument']['name'];
         $leDossierInitial = '../portail/documents/';
                         

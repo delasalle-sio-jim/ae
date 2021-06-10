@@ -59,7 +59,7 @@
 
 				<p>
 					<label for="txtNom">Nom du groupe * :</label>
-					<input type="text" name="txtNom" id="txtNom" maxlength="40" required=true/>
+					<input type="text" name="txtNom" id="txtNom" maxlength="100" required=true/>
 
 				</p>						
 				<p>

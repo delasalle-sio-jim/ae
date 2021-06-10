@@ -104,7 +104,7 @@
 				
 				<p>
 					<label for="txtBouton">Nom du bouton :</label>
-					<input type="text" name="txtBouton" id="txtBouton" maxlength="30" required value="<?php echo $unNomSurBouton; ?>" />
+					<input type="text" name="txtBouton" maxlength="100" id="txtBouton" required value="<?php echo $unNomSurBouton; ?>" />
 				</p>
 				<p>
 				<label for="listeGroupes">Le groupe du document :</label>

@@ -91,7 +91,7 @@
 				</p>			
 				<p>
 					<label for="txtNom">Nouveau nom :</label>
-					<input type="text" name="txtNom" id="txtNom" maxlength="40" required />
+					<input type="text" name="txtNom" id="txtNom" maxlength="100" required />
 						
 							
 				<p>

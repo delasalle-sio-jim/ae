@@ -63,7 +63,7 @@
 						</p>
 						<p>
 							<label for="txtBouton">Nom * :</label>
-							<input type="text" name="txtBouton" id="txtBouton" placeholder="Entrez le nom qui apparaitra sur le bouton correspondant au document" required value="<?php echo $unNomSurBouton; ?>">
+							<input type="text" name="txtBouton" id="txtBouton" maxlength="100" placeholder="Entrez le nom qui apparaitra sur le bouton correspondant au document" required value="<?php echo $unNomSurBouton; ?>">
 						</p>
 						<p>
 						<label for="listeGroupes">Nom du groupe * :</label>
