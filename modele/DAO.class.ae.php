@@ -8,7 +8,7 @@
 //						 Participation de : Nicolas Esteve et Killian Boutin
 // -------------------------------------------------------------------------------------------------------------------------
 
-// ATTENTION : la position des méthodes dans ce fichier est identique à la position des tests dans la classe DAO.test.php
+// ATTENTION : la position des méthodes dans ce fichier est identique à la position des tests dans la classe DAO.test.ae.php
 
 // liste des méthodes de cette classe (dans l'ordre d'apparition dans la classe) :
 
@@ -106,6 +106,9 @@
 // getLesInscriptions() : Inscriptions
 //   fournit toutes les inscriptions (non annulées) de la BDD
 
+// getLaListeInscriptions() : Liste d'Inscriptions
+//   cette liste est tirée d'une vue permettant de créer un pdf pour vérifier les élèves qui ont payés.
+
 // annulerInscription($idInscription) : booléen
 //   annule une inscription dans la bdd et retourne true si enregistrement effectué correctement, retourne false en cas de problème
 
@@ -139,6 +142,7 @@
 // supprimerImage($idImage) : booléen
 //   supprime la photo passée en paramètre dans la BDD et retourne true si la suppression s'est effectuée correctement, retourne false sinon
 
+ 
 
 // certaines méthodes nécessitent les fichiers suivants :
 include_once ('Fonction.class.php');
@@ -151,7 +155,7 @@ include_once ('Outils.class.php');
 
 // inclusion des paramètres de l'application
 //include_once ('parametres.free.php');
-include_once ('parametres.localhost.php');
+include_once ('parametres.ae.php');
 
 // début de la classe DAO (Data Access Object)
 class DAO
@@ -939,6 +943,15 @@ class DAO
 		return $lesInscriptions;
 	}
 	
+	public function purgerLesInscriptions()
+	{
+	    $txt_req = "DELETE FROM ae_inscriptions ";
+	    $txt_req .= " WHERE DATEDIFF(CURDATE(), dateInscription)* 86400 >= 15552000";
+	    $req = $this->cnx->prepare($txt_req);
+	    $ok = $req->execute();
+	    return $ok;
+	}
+	
 	// modifie l'inscription dans la bdd et retourne true si mise à jour effectuée correctement, retourne false en cas de problème
 	// créé par Nicolas Esteve  le XX/01/2016
 	// modifié par Killian BOUTIN le 28/05/2016
@@ -967,6 +980,34 @@ class DAO
 		return $ok;
 	}	
 
+	public function getLaListeInscriptions()
+	{
+	    $txt_req ="SELECT * FROM ae_liste_inscriptions";
+	    $req = $this->cnx->prepare($txt_req);
+	    $req->execute();
+	    $uneLigne = $req->fetch(PDO::FETCH_OBJ);
+	    // construction d'une collection d'inscriptions
+	    $lesInscriptions = array();
+	    // tant qu'une ligne est trouvée :
+	    while ($uneLigne)
+	    {
+	       $unNom = utf8_encode($uneLigne->nom);
+	       $unPrenom = utf8_encode($uneLigne->prenom);
+	       $unNbrePersonnes = utf8_encode($uneLigne->nbrePersonnes);
+	       $unMontant = utf8_encode($uneLigne->montant);
+	       $laLigne = $unNom." ".$unPrenom." ".$unNbrePersonnes." ".$unMontant;
+	       $lesInscriptions[] = $uneLigne;
+	    
+	    // extrait la ligne suivante
+	    $uneLigne = $req->fetch(PDO::FETCH_OBJ);
+	    }
+	    // libère les ressources du jeu de données
+	    $req->closeCursor();
+	    // retourne la collection
+	    return $lesInscriptions;
+	    
+	}
+	
 	// fournit l'identifiant de l'inscription à partir de l'identifiant de l'élève
 	// fournit la valeur -1 si aucune inscription ou si l'identifiant élève n'existe pas
 	// créé par Jim le 13/05/2016
@@ -1213,7 +1254,7 @@ class DAO
 	// créé par Killian BOUTIN le 01/06/2016
 	public function ExportToCSV($nomColonnes, $requeteSQL, $nomFichierCSV)
 	{
-		include 'parametres.localhost.php';
+		include 'parametres.ae.php';
 		
 		// on initialise les valeurs
 		$csv = "";

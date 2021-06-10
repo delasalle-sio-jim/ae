@@ -9,7 +9,7 @@ if ( $_SESSION['typeUtilisateur'] != 'eleve') {
 	header ("Location: index.php?action=Deconnecter");
 }
 // connexion du serveur web à la base MySQL
-include_once ('modele/DAO.class.php');
+include_once ('modele/DAO.class.ae.php');
 $dao = new DAO();
 // obtention de la collection des fonctions occupées par les anciens élèves (pour liste déroulante)
 $lesImages = $dao->getLesImages();

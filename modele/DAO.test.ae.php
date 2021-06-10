@@ -1,7 +1,7 @@
 <?php
 // Projet DLS - BTS Info - Anciens élèves
 // Test de la classe DAO
-// fichier : modele/DAO.test.php
+// fichier : modele/DAO.test.ae.php
 // Création : 16/11/2015 par JM CARTRON
 // Mise à jour : 13/5/2016 par JM CARTRON
 
@@ -26,7 +26,7 @@ include_once ('Outils.class.php');
 
 <?php
 // connexion du serveur web à la base MySQL
-include_once ('DAO.class.php');
+include_once ('DAO.class.ae.php');
 $dao = new DAO();
 
 /*
@@ -806,7 +806,7 @@ else{
 // test de la méthode redimensionnerImage(uneImage, uneDestination, uneTailleMax) ---------------------------------------------------------
 // créé par le 17/06/2016 Killian BOUTIN
 
-echo "<h3>Test de redimensionnerImage(uneImage, uneDestination, uneTailleMax) : </h3>";
+// echo "<h3>Test de redimensionnerImage(uneImage, uneDestination, uneTailleMax) : </h3>";
 
 ?> 
 <form enctype="multipart/form-data" action="DAO.test.php" method="post">
@@ -814,7 +814,7 @@ echo "<h3>Test de redimensionnerImage(uneImage, uneDestination, uneTailleMax) : 
 	<input type="submit" value="Envoyer les données" name="btnEnvoi" id="btnEnvoi" />		
 </form>
 
-<?php
+// <?php
 if (!empty ($_FILES['filePhoto'])){
 	
 	/* Initialisation des variables d'upload de la photo */

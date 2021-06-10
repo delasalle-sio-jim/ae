@@ -74,7 +74,7 @@
 						<a href="exportations/NonInscrits.csv">Liste des non inscrits</a>
 					</p>
 					
-					<input type="submit" name="btnExporter" id="btnExporter" value="Télécharger">
+					<input type="submit" name="btnPDF" id="btnPDF" value="Télécharger la liste d'inscription">
 			</form>				
 		</div>
 		

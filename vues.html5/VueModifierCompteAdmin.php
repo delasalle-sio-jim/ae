@@ -9,7 +9,7 @@
 <html lang="fr">
 <head>	
 	<?php include_once ('head.php');
-	include_once ('modele/DAO.class.php');
+	include_once ('modele/DAO.class.ae.php');
 	$dao = new DAO();?>
 	<script>
 		window.onload = initialisations;	

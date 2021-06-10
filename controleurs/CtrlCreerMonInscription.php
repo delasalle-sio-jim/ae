@@ -4,7 +4,7 @@
 // Ecrit le 02/02/2016 par Nicolas Esteve
 // Modifié le 06/06/2016 par Killian BOUTIN
 
-include_once ('modele/DAO.class.php');
+include_once ('modele/DAO.class.ae.php');
 $dao = new DAO();
 
 // mise en place de variable permanentes

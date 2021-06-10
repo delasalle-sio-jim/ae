@@ -20,7 +20,7 @@ global $ADR_MAIL_EMETTEUR, $ADR_MAIL_ADMINISTRATEUR, $ADR_SERVICE_WEB;
 // inclusion de la classe Outils
 include_once ('../modele/Outils.class.php');
 // inclusion des paramètres de l'application
-include_once ('../modele/parametres.localhost.php');
+include_once ('../modele/parametres.ae.php');
 	
 // Récupération des données transmises
 // la fonction $_GET récupère une donnée passée en paramètre dans l'URL par la méthode GET
@@ -42,7 +42,7 @@ else
 	include_once ('../modele/Eleve.class.php');
 	
 	// connexion du serveur web à la base MySQL ("include_once" peut être remplacé par "require_once")
-	include_once ('../modele/DAO.class.php');
+	include_once ('../modele/DAO.class.ae.php');
 	$dao = new DAO();
 	
 	// recherche de l'élève par son identifiant

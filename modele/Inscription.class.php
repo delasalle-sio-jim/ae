@@ -26,7 +26,7 @@ class Inscription
 	private $prenom;				// le prénom de l'ancien élève inscrit
 	private $anneeDebutBTS;			// année d'entrée en BTS (sur 4 caractères)
 	private $tarif;					// tarif
-
+    private $montant;
 	// ------------------------------------------------------------------------------------------------------
 	// ----------------------------------------- Constructeur -----------------------------------------------
 	// ------------------------------------------------------------------------------------------------------
@@ -45,6 +45,14 @@ class Inscription
 		$this->inscriptionAnnulee = $inscriptionAnnulee;
 		$this->tarif = $leTarif;
 	}	
+	
+	public function ListeInscription($unNom,$unPrenom,$unNbrePersonnes,$unMontant)
+	{
+	    $this->nom = $unNom;
+	    $this->prenom = $unPrenom;
+	    $this->nbrePersonnes = $unNbrePersonnes;
+	    $this->montant = $unMontant;
+	}
 	
 	// ------------------------------------------------------------------------------------------------------
 	// ---------------------------------------- Getters et Setters ------------------------------------------

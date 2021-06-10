@@ -25,30 +25,9 @@
 			mapTypeId: google.maps.MapTypeId.HYBRID // ROADMAP pour le plan ; SATELLITE pour les photos satellite ; HYBRID pour afficher les photos satellites avec le plan superposé ; TERRAIN pour afficher les reliefs
 		}
 
-		// on initialise la carte que l'on va insérer dans la div "map_canvas" avec les données de "myOptions"
-		var map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
-
 		// on initialise un message 
 		var contentString = "<b><?php echo $leRestaurant ?></b><br><?php echo $lAdresse ?>";
-
-		// on initialise la fenêtre d'affichage du message avec une grandeur maximum de 150 (pour afficher la rue sur une ligne différente du code postal et de la ville)
-		var infowindow = new google.maps.InfoWindow({
-			content: contentString,
-			maxWidth: 150
-	  	});
-
-	  	// on initialise le "marker" rouge sur la carte qui se positionnera au niveau de la latitude et longitude initialisé auparavant
-		var marker = new google.maps.Marker({
-			position: latlng,
-			map: map
-		});
-
-		// on ajout un listener au click sur le "marker" créé afin d'y ouvrir "infowindow" qui contient le message de "contentString"
-		marker.addListener('click', function() {
-			infowindow.open(map, marker);
-		});
 		
-	} 
 	</script>
 </head> 
 <body onload="initialize()">
@@ -76,18 +55,13 @@
 				<p>Bonjour,</p>
 				<p>Comme chaque année, l'association INPACT organise un repas auquel les étudiants, anciens étudiants et professeurs du BTS SIO (ex BTS IG) du Lycée De La Salle sont conviés.</p>
 				<p>Cette soirée vous permettra de retrouver vos camarades et vos professeurs préférés. À l'image des précédents repas, elle vous permettra également de faire connaissance avec les nouveaux étudiants.
-				<p>Ce repas aura lieu le <b><!-- vendredi, est affiché en dynamique avec le contrôleur --><?php echo $laDateSoiree ?> à 20 h</b><br> au restaurant <b> <?php echo $leRestaurant ?> </b><br>
-				 situé <b> <?php echo $lAdresse ?> </b>.</p>
+				<p>Ce repas aura lieu le <b><!-- vendredi, est affiché en dynamique avec le contrôleur --><?php echo $laDateSoiree ?> à 20 h</b> au restaurant <b> <?php echo $leRestaurant ?> </b>
+				 situé <b> <?php echo $lAdresse ?></b>.</p>
 				<p>Le tarif est de <b> <?php echo $leTarif ?> €</b> par personne. </p>
 				<p>Informations plus détaillées sur le restaurant<br>
 				ou sur les menus proposés sur <a target="_blank" href=" <?php echo $leLienMenu  ?>">le site de <?php echo $leRestaurant ?></a>.</p>
 				<p>Dans l'espoir de vous voir à cette soirée,<br/><br/>Cordialement,<br/>L'équipe d'INPACT</p>
-			<?php } ?>
-			
-			<div id="map_canvas">
-				Veuillez attendre le chargement de la carte...
-			</div>
-					
+			<?php } ?>	
 		</div>
 		
 		<div id="footer">

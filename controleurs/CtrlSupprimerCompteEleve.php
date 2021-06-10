@@ -12,7 +12,7 @@ if ( $_SESSION['typeUtilisateur'] != 'administrateur') {
 	header ("Location: index.php?action=Deconnecter");
 }
 // connexion du serveur web à la base MySQL
-include_once ('modele/DAO.class.php');
+include_once ('modele/DAO.class.ae.php');
 $dao = new DAO();
 // obtention de la collection des fonctions occupées par les anciens élèves (pour liste déroulante)
 if ( empty ($_POST ["mail"]) == true)  $mail = "";  else   $mail = $_POST ["mail"];

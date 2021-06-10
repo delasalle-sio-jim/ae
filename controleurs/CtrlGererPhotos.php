@@ -4,7 +4,7 @@
 // Ecrit le 15/06/2016 par Killian BOUTIN
 
 // connexion du serveur web à la base MySQL
-include_once ('modele/DAO.class.php');
+include_once ('modele/DAO.class.ae.php');
 
 
 $dao = new DAO();

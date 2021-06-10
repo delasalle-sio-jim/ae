@@ -90,7 +90,6 @@
 							<p><a href="index.php?action=VoirListeInscritsAdmin" class="bouton-menu">Consulter la liste des inscriptions</a></p>
 							<!-- <p><a href="index.php?action=EnvoyerCourriel" class="bouton-menu">Envoyer un courriel</a></p> -->
 							<p><a href="index.php?action=ExporterDesDonnees" class="bouton-menu">Exporter des données</a></p>
-							<p><a href="index.php?action=UploaderDesDonnees" class="bouton-menu">Uploader des données</a></p>
 							<p><a href="index.php?action=ModifierReglementsRemboursements" class="bouton-menu">Mettre à jour règlements et remboursements</a></p>
 						</div>
 					</div>
@@ -118,6 +117,18 @@
 							<p><a href="index.php?action=CreerCompteAdmin" class="bouton-menu">Créer un compte administrateur</a></p>
 							<p><a href="index.php?action=ModifierCompteAdmin" class="bouton-menu">Modifier un compte administrateur</a></p>
 							<p><a href="index.php?action=SupprimerCompteAdmin" class="bouton-menu">Supprimer un compte administrateur</a></p>
+						</div>
+					</div>
+					
+					<div id="menu6" class="menu">
+						<h3><a href="#menu6">Gérer les documents du portail...</a></h3>
+						<div>
+							<p><a href="index.php?action=CreerGroupe" class="bouton-menu">Créer un groupe</a></p>
+							<p><a href="index.php?action=ModifierGroupe" class="bouton-menu">Modifier un groupe</a></p>
+							<p><a href="index.php?action=SupprimerGroupe" class="bouton-menu">Supprimer un groupe</a></p>
+							<p><a href="index.php?action=AjouterDocument" class="bouton-menu">Ajouter un document</a></p>
+							<p><a href="index.php?action=ModifierDocument" class="bouton-menu">Modifier un document</a></p>
+							<p><a href="index.php?action=SupprimerDocument" class="bouton-menu">Supprimer un document</a></p>
 						</div>
 					</div>
 				<?php } ?>

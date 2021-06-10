@@ -4,7 +4,7 @@
 // Ecrit le 16/06/2016 par Killian BOUTIN
 
 // connexion du serveur web à la base MySQL
-include_once ('modele/DAO.class.php');
+include_once ('modele/DAO.class.ae.php');
 include_once ('modele/Outils.class.php');
 
 
@@ -95,12 +95,12 @@ else{
 				move_uploaded_file($_FILES['filePhoto']['tmp_name'], $leDossierInitial . $unLien);
 				
 				/* On supprime le fichier qui a le même nom s'il existe dans les dossiers */
-				if ((file_exists($leDossier700 . $unLien)) AND $unLien != 'nophoto.jpg'){
+				if ((file_exists($leDossier700 . $unLien)) && $unLien != 'nophoto.jpg'){
 					unlink($leDossier700 . $unLien);
 				}				
 				Outils::redimensionnerImage($unLien, $leDossierInitial, $leDossier700, 700);
 				
-				if ((file_exists($leDossier300 . $unLien)) AND $leDossier700 . $unLien != 'nophoto.jpg'){
+				if ((file_exists($leDossier300 . $unLien)) && $leDossier700 . $unLien != 'nophoto.jpg'){
 					unlink($leDossier300 . $unLien);
 				}
 				Outils::redimensionnerImage($unLien, $leDossierInitial, $leDossier300, 300);

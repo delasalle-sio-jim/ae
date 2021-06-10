@@ -290,7 +290,7 @@ div#menu-vertical {
 	/* padding en haut et en bas */
 	padding: 20px 0 20px 0;
 	width: 450px;
-	height: 330px;
+	height: 370px;
 	margin: 0 auto;
 }
 
@@ -585,6 +585,28 @@ input[type=radio]:first-child {
 	margin-left: 200px;
 }
 input[type=submit] {
+	font-weight: bold;
+	border: solid 1px grey;
+	width: 230px;
+	height: 25px;
+	margin-left: 300px;
+	margin-top: 0px;
+	
+	/* coins arrondis */
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	-o-border-radius: 7px;
+	-ms-border-radius: 7px;
+	-khtml-border-radius: 7px;
+	border-radius: 7px;
+	
+	/* fond avec un dégradé de couleur (blanc en haut, gris léger en bas) */
+	background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(210, 210, 210));
+	background: -webkit-gradient(linear, right top, right bottom, from(rgb(255, 255, 255)), to(rgb(210, 210, 210)));
+	background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(210, 210, 210));
+}
+
+input[type=submit2] {
 	font-weight: bold;
 	border: solid 1px grey;
 	width: 230px;

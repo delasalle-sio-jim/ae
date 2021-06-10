@@ -30,7 +30,7 @@ $debug = false;
 $version = "1.4.5";				// choix de la version de JQuery Mobile (voir fichier head.php) parmi les valeurs 1.2.0,  1.2.1,  1.3.2,  1.4.5
 $themeNormal = "a";				// thème de base
 $themeProbleme = "b";			// thème utilisé pour afficher un message en cas de problème
-$transition = "flip";			// transition lors des changements de page (pop, flip, fade, turn, flow, slidefade, slide, slideup, slidedown)
+$transition = "pop";			// transition lors des changements de page (pop, flip, fade, turn, flow, slidefade, slide, slideup, slidedown)
 $titreHeader = "DLS-Info-AE";	// titre affiché dans le header de chaque page
 
 // on vérifie le paramètre action de l'URL
@@ -68,7 +68,7 @@ else
 
 // -------------------------------------
 // forçage provisoire en mode mobile
- $cheminDesVues = "vues.jquery/";
+//$cheminDesVues = "vues.jquery/";
 // -------------------------------------
 
 // ATTENTION ON TRICHE (EN DEVELOPPEMENT) POUR FORCER L'AFFICHAGE DE LA VERSION MOBILE SUR LE POSTE DE DEVELOPPEMENT :
@@ -163,6 +163,26 @@ switch($action){
 	case 'UploaderDesDonnees':{
 	    include_once('controleurs/CtrlUploaderDesDonnees.php');break;
 	}
+	case 'CreerGroupe':{
+	    include_once('controleurs/CtrlCreerGroupe.php');break;
+	}
+	case 'ModifierGroupe':{
+	    include_once('controleurs/CtrlModifierGroupe.php');break;
+	}
+	case 'SupprimerGroupe':{
+	    include_once('controleurs/CtrlSupprimerGroupe.php');break;
+	}
+	case 'AjouterDocument':{
+	    include_once('controleurs/CtrlAjouterDocument.php');break;
+	}
+	case 'ModifierDocument':{
+	    include_once('controleurs/CtrlModifierDocument.php');break;
+	}
+	case 'SupprimerDocument':{
+	    include_once('controleurs/CtrlSupprimerDocument.php');break;
+	}
+	
+	
 	
 	// toute autre tentative est automatiquement redirigée vers le contrôleur d'authentification	
 	default : {

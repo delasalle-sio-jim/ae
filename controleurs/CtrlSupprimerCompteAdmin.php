@@ -12,7 +12,7 @@ if ( $_SESSION['typeUtilisateur'] != 'administrateur') {
 }
 
 // connexion du serveur web à la base MySQL
-include_once ('modele/DAO.class.php');
+include_once ('modele/DAO.class.ae.php');
 $dao = new DAO();
 
 if( (! isset ($_POST ["listeAdmins"]) == true)&&( ! isset ($_POST ["btnSupprimerAdmin"]) == true)){			
@@ -56,7 +56,7 @@ else {
 	else{
 
 		$etape = 0;
-		include_once ('modele/DAO.class.php');
+		include_once ('modele/DAO.class.ae.php');
 		$dao = new DAO();
 		$unAdministrateur = $dao->getAdministrateur($_SESSION['adrMailAdmin']);
 		$idAdmin = $unAdministrateur->getId();

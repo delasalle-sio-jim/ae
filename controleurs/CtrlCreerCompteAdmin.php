@@ -15,7 +15,7 @@ if ( $_SESSION['typeUtilisateur'] != 'administrateur') {
 include_once ('modele/Outils.class.php');
 
 // connexion du serveur web à la base MySQL
-include_once ('modele/DAO.class.php');
+include_once ('modele/DAO.class.ae.php');
 $dao = new DAO();
 
 
@@ -50,7 +50,7 @@ else
 	}
 	else {
 		// connexion du serveur web à la base MySQL
-		include_once ('modele/DAO.class.php');
+		include_once ('modele/DAO.class.ae.php');
 		$dao = new DAO();
 		$nouveauMdp = Outils::creerMdp();
 		$unAdministrateur = new Administrateur(0, $adrMailAdmin, $nouveauMdp, $prenomAdmin, $nomAdmin);

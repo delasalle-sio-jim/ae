@@ -5,7 +5,7 @@
 // Modifié le 25/05/2016 par Killian BOUTIN
 
 // connexion du serveur web à la base MySQL
-include_once ('modele/DAO.class.php');
+include_once ('modele/DAO.class.ae.php');
 
 if ( $_SESSION['typeUtilisateur'] != 'administrateur') {
 	// si le demandeur n'est pas authentifié, il s'agit d'une tentative d'accès frauduleux

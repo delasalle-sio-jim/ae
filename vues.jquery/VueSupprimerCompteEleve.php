@@ -14,7 +14,7 @@ header('Expires: 0');
 <head>	
 <meta charset="utf-8">
 	<?php include_once ('head.php');
-	include_once ('modele/DAO.class.php');
+	include_once ('modele/DAO.class.ae.php');
 	$dao = new DAO();?>
 		<script>
 			<?php if ($typeMessage != '') { ?>

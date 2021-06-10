@@ -43,7 +43,7 @@
 								<?php 
 								} ?>
 								<li><a href="index.php?action=VoirListeInscritsEleve" data-mini="true" data-role="button" data-ajax="false" data-transition="<?php echo $transition; ?>">Consulter la liste des inscriptions</a></li>
-								<li><a href="<?php echo $uneSoiree->getLienMenu()?>" data-mini="true" data-role="button" data-ajax="false" data-transition="<?php echo $transition; ?>">Choisissez votre menu</a></li>
+								
 								<?php 
 									if ($dao->getInscriptionEleve($idEleve) != null AND $dao->getSoiree(true) != NULL){
 								?>
@@ -51,6 +51,8 @@
 								
 								<?php 
 								} ?>
+								
+								<li><a href="<?php echo $uneSoiree->getLienMenu()?>"data-mini="true" data-role="button" data-ajax="false" data-transition="<?php echo $transition; ?>">Choisissez votre menu</a></li>
 							</ul>
 						</div>	
 													
@@ -112,6 +114,19 @@
 								<li><a href="index.php?action=SupprimerCompteAdmin" data-mini="true" data-role="button" data-ajax="false" data-transition="<?php echo $transition; ?>">Supprimer un compte administrateur</a></li>
 							</ul>
 						</div>
+						<!--
+						<div data-role="collapsible" >
+							<h3 data-mini="true">Gérer les groupes et les documents...</h3>
+							<ul data-role="listview" data-inset="true">
+								<li><a href="index.php?action=CreerGroupe" data-mini="true" data-role="button" data-ajax="false" data-transition="<?php echo $transition; ?>">Créer un groupe</a></li>
+								<li><a href="index.php?action=ModifierGroupe" data-mini="true" data-role="button" data-ajax="false" data-transition="<?php echo $transition; ?>">Modifier un groupe</a></li>
+								<li><a href="index.php?action=SupprimerGroupe" data-mini="true" data-role="button" data-ajax="false" data-transition="<?php echo $transition; ?>">Supprimer un groupe</a></li>
+								<li><a href="index.php?action=AjouterDocument" data-mini="true" data-role="button" data-ajax="false" data-transition="<?php echo $transition; ?>">Ajouter un document</a></li>
+								<li><a href="index.php?action=ModifierDocument" data-mini="true" data-role="button" data-ajax="false" data-transition="<?php echo $transition; ?>">Modifier un document</a></li>
+								<li><a href="index.php?action=SupprimerDocument" data-mini="true" data-role="button" data-ajax="false" data-transition="<?php echo $transition; ?>">Supprimer un document</a></li>
+ 							</ul>
+						</div>  
+						-->
 					</div>	
 					<?php } ?>
 				

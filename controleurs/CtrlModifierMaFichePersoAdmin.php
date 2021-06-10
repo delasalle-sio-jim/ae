@@ -7,7 +7,7 @@
 include_once ('modele/Outils.class.php');
 
 // connexion du serveur web à la base MySQL
-include_once ('modele/DAO.class.php');
+include_once ('modele/DAO.class.ae.php');
 $dao = new DAO();
 
 // recherche de la fiche élève dans la BDD à partir de son adresse mail
