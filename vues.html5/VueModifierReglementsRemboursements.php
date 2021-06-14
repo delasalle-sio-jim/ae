@@ -1,17 +1,20 @@
 <?php
 // Projet DLS - BTS Info - Anciens élèves
-// Fonction de la vue vues.html5/VueModifierReglementsRemboursements.php : visualiser la vue de remboursement
+// Fonction de la vue vues.html5/VueModifierReglementsRemboursements.php : voir la liste des inscrits afin de mettre à jour ceux qui ont payés ou ceux qu'il f
 // Ecrit le 6/1/2016 par Nicolas Esteve
 // Modifié le 31/05/2016 par Killian BOUTIN
+// Modifié le 10/06/2016 par Baptiste de Bailliencourt
+
 ?>
 <!doctype html>
 <html>
 <head>	
 	<?php include_once ('head.php');?>
-	
-	<script>
+		<script>
 		window.onload = initialisations;
+		
 		function initialisations() {
+
 			<?php if ($typeMessage == 'avertissement') { ?>
 				afficher_avertissement("<?php echo $message; ?>");
 			<?php } ?>
@@ -21,45 +24,6 @@
 			<?php } ?>
 		}
 		
-	</script>
-	
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  	
-	<style>
-		 .ui-autocomplete {
-			 max-height: 100px;
-			 overflow-y: auto;
-			 /* prevent horizontal scrollbar */
-			 overflow-x: hidden;
-		 }
-		 /* IE 6 doesn't support max-height
-		  * we use height instead, but this forces the menu to always be this tall
-		  */
-		 * html .ui-autocomplete {
-			 height: 100px;
-		 }
-	</style>
-	
-	<script>
-	 $(function() {
-		    var listeEleves  = [ 
-		     <?php 
-	     	$eleveMails='"';
-			foreach($lesMails as $unMail){ 
-				$eleveMails .= $unMail.'","';
-			 } 
-			 $eleveMails = substr($eleveMails ,0,-2);
-			 echo $eleveMails;?>	         			    
-			];
-		    $( "#listeEleves" ).autocomplete({
-		      source: listeEleves
-		    });
-		  });
-	</script>
-	<script>
-
 		function afficher_information(msg) {
 			document.getElementById("titre_message").innerHTML = "Information...";
 			document.getElementById("titre_message").className = "classe_information";
@@ -73,7 +37,6 @@
 			window.open ("#affichage_message", "_self");
 		}
 	</script>
-	
 </head> 
 <body>
 	<div id="page">
@@ -90,79 +53,135 @@
 				<img src="images/Intitules_bts_ig_sio.png" id="logo-droite" alt="BTS Informatique" />
 			</div>
 		</div>
-				
+			
 		<div id="content">
-			<h2>Mise à jour des réglements et remboursements d'un élève</h2>
+			<h2>Liste des inscrits à la prochaine soirée des anciens</h2>
 			
-			<?php if($etape == 0){ ?>
-			
-				<h3>Entrez l'adresse mail du compte de l'élève à modifier :</h3>
-				
-			<?php } else { ?>
-			
-				<h3>Modifiez le compte de <?php echo $unPrenom . ' ' . $unNom; ?> :</h3>
-				
-			<?php } ?>
 			<form name="form1" id="form1" action="index.php?action=ModifierReglementsRemboursements" method="post">
 			
-					<?php if($etape == 0){ ?>
-					<div class="ui-widget">
-						<p>
-							 <label for="listeEleves">Eleves: </label>
-		 					 <input type="email" id="listeEleves"   name="listeEleves" placeholder="Recherchez à l'aide de l'email de l'utilisateur" value = "<?php if (!empty ($_POST ["listeEleves"]) == true) echo $_POST ["listeEleves"]; else echo "";?>" pattern="^.+@.+\..+$" required>
-						</p>
-						<p>
-							<input type="submit" name="btnDetail" id="btnDetail" value="Obtenir les détails">
-						</p>	
-					</div>
+			<h3 class="titre_inscription"><?php echo $titre ?></h3>
+			
 
-					<?php }else {?>
-						<p>
-							<label >Adresse mail :</label>
-							<input type="text" value="<?php echo $adrMailEleve ?>" disabled>
-						</p>
-						<p>
-							<label >Nbr de places réservées :</label>
-							<input type="text" value="<?php echo $unNbrePersonnes ?>" disabled>
-						</p>
-						<p>
-							<label >Date d'inscription :</label>
-							<input type="text" value="<?php echo $dateInscription ?>" disabled >
-						</p>
-						<p>
-							<label  for="txtMontantRegle">Montant réglé par l'élève :</label>
-							<input type="text" name="txtMontantRegle" id="txtMontantRegle" maxlength="20" placeholder="Montant regle à l'avance par l'élève"  value="<?php echo $montantRegle?>" >
-						</p>
-						<p>
-							<label for="txtMontantRembourse">Montant remboursé à l'élève :</label>
-							<input type="text" name="txtMontantRembourse" id="txtMontantRembourse" maxlength="20" placeholder="Montant rembourse à l'élève"  value="<?php echo $montantRembourse?>" >
-						</p>
-						<p>
-							<label class=label2 >Coût restant à payer par l'élève : <?php echo $montantTotal ?> €</label>
-						</p>
-						<p>
-							<label id="boutonAnnulerInscription" >Annuler l'inscription de l'élève :</label>
-								Non <input type="radio" onclick="$('#caseConfirmation').attr('checked', false); $('#annulerInscription').hide(2);" value="annulerNon" id="annulerNon" name="radioAnnuler" checked="checked" >
-								Oui <input type="radio" onclick="$('#annulerInscription').slideDown(2);" value="annulerOui" id="annulerOui" name="radioAnnuler"/>
-								  
-							<div id="annulerInscription" style="display: none">
-								Cochez cette case pour confirmer l'annulation de l'inscription : <input type=checkbox id="caseConfirmation" name="caseConfirmation">
-							</div>		
-						</p>
-						<div class="ui-widget">
-							<p>
-								<input type="submit" name="btnModifier" id="btnModifier" value="Changer les données">
-							</p>
-						</div>
-					<?php }?>
-			</form>
+				<?php
+				
+				/* si le nombre d'inscrit n'est pas égal à 0 */
+				if ($nombreInscrits != 0 ){
+					/* création de la première ligne dans le tableau */
+					?>
+					
+					<table class="tableau inscription inscriptionAdmin">
+						<thead>
+							<tr>
+								<th>Nom</th>
+								<th>Nb pers.</th>
+								<th>Promotion</th>
+								<th>Mt réglé</th>
+								<th>Mt remboursé</th>
+								<th>Reste dû</th>
+								<th>Payé ?</th>
+								<th>Annulé ?</th>
+								<th>Remboursé ?</th>
+							</tr>
+						</thead>
+						
+					<?php
+				
+					/* pour chaque $uneInscription de la collection $lesInscriptions */
+					foreach ($lesInscriptions as $uneInscription)
+					{
+						/*obtention du montant à régler puis du montant total à regler */
+						$montantRegle = $uneInscription->getMontantRegle();
+						$montantTotalRegle += $montantRegle;
+						
+						/* obtention du montant remboursé puis du montant total remboursé */
+						$montantRembourse = $uneInscription->getMontantRembourse();
+						$montantTotalRembourse += $montantRembourse;
+						
+						/* obtention du coût total à payer puis du montant final */
+						$coutTotal = $uneInscription->getTarif() * $uneInscription->getNbrePersonnes() - ($montantRegle + $montantRembourse);
+						if ($coutTotal <=0)
+						    $coutTotal =0;
+						$montantTotalFinal += $coutTotal;
+
+						/* on formate les nombres au format français */
+						$montantRegle = number_format($uneInscription->getMontantRegle(), 2, ',', ' ');
+						$montantRembourse = number_format($uneInscription->getMontantRembourse(), 2, ',', ' ');
+						$coutTotal = number_format($coutTotal, 2, ',', ' ');
+						
+						/* création d'une ligne du tableau */
+						?>
+						
+						<tr>
+							
+							<td><?php echo $uneInscription->getNom() . " " . $uneInscription->getPrenom() ?></td>
+							<td><?php echo $uneInscription->getNbrePersonnes() ?></td>
+							<td><?php echo $uneInscription->getAnneeDebutBTS() ?></td>
+							<td><?php echo $montantRegle ?> €</td>
+							<td><?php echo $montantRembourse ?> €</td>
+							<td><?php echo $coutTotal ?> €</td>
+							<?php if(($uneInscription->getMontantRegle() ) == ( $unTarif * $uneInscription->getNbrePersonnes()))
+                                    {
+                                   
+                                        $inscriptionPayee = 'on';
+                            
+                                    }
+                                    else           
+                                        $inscriptionPayee = 'off';
+                                    if($uneInscription->getInscriptionAnnulee() == 1)
+                                    {
+                                        $inscriptionAnnulee = 'on';
+                                    }
+                                    else 
+                                        $inscriptionAnnulee = 'off';
+                                    if($uneInscription->getMontantRembourse() == ( $unTarif * $uneInscription->getNbrePersonnes()))
+                                    {
+                                        $inscriptionRemboursee = 'on';
+                                    }
+                                    else 
+                                        $inscriptionRemboursee = 'off';
+                                    ?>
+							<td><input type="checkbox" name="Paye[]" value=<?php echo $uneInscription->getId()?> <?php if ($inscriptionPayee == 'on') echo 'checked'; ?>></td>
+							<td><input type="checkbox" name="Annule[]" value=<?php echo $uneInscription->getId()?> <?php if ($inscriptionAnnulee == 'on') echo 'checked'; ?>></td>
+							<td><input type="checkbox" name="Rembourse[]" value=<?php echo $uneInscription->getId()?> <?php if ($inscriptionRemboursee == 'on') echo 'checked'; ?>></td>
+						</tr>
+						
+						<?php
+						/* ajout du nombre d'inscrits de cet enregistrement au nombre total d'inscrits */
+						$nombreInscritsTotal += $uneInscription->getNbrePersonnes();
+	
+					} 
+					
+						/* on formate les nombres au format français */
+						$montantTotalRegle = number_format($montantTotalRegle, 2, ',', ' ');
+						$montantTotalRembourse = number_format($montantTotalRembourse, 2, ',', ' ');
+						$montantTotalFinal = number_format($montantTotalFinal, 2, ',', ' ');
+						
+						?>
+						<tr>
+							<td>Total</td>
+							<td><?php echo $nombreInscritsTotal ?> pers.</td>
+							<td>-</td>
+							<td><?php echo $montantTotalRegle ?> €</td>
+							<td><?php echo $montantTotalRembourse ?> €</td>
+							<td><?php echo $montantTotalFinal ?> €</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+					</table>
+					<p>
+			<input type="submit" name="btnMaj" id="btnMaj" value="Mettre à jour les informations">
+			</p>
+				<?php 
+				}
+				?>
+				</form>
 		</div>
 		
 		<div id="footer">
 			<p>Annuaire des anciens élèves du BTS Informatique - Lycée De La Salle (Rennes)</p>
 		</div>		
 	</div>
-	
 	<aside id="affichage_message" class="classe_message">
 		<div>
 			<h2 id="titre_message" class="classe_information">Message</h2>

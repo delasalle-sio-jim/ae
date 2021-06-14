@@ -9,7 +9,7 @@ include_once ('modele/DAO.class.ae.php');
 $dao = new DAO();
 
 // récupère les détails des inscriptions pour les afficher
-$lesInscriptions = $dao->getLesInscriptions();
+$lesInscriptions = $dao->getLesInscriptionsSansAnnulations();
 
 /* récupération du nombre d'inscriptions */
 $nombreInscrits = sizeof($lesInscriptions);

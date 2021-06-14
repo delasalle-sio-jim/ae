@@ -103,7 +103,7 @@
 // getInscriptionEleve($idEleve) : Inscription
 //   fournit un objet Inscription à partir de l'idEleve ; fournit la valeur null si l'élève n'a pas d'inscription
 
-// getLesInscriptions() : Inscriptions
+// getLesInscriptionsSansAnnulations() : Inscriptions
 //   fournit toutes les inscriptions (non annulées) de la BDD
 
 // getLaListeInscriptions() : Liste d'Inscriptions
@@ -899,7 +899,7 @@ class DAO
 	// créé par Killian BOUTIN le 25/05/2016
 	// modifié par Killian BOUTIN le 26/05/2016
 	
-	public function getLesInscriptions()
+	public function getLesInscriptionsSansAnnulations()
 	{	// préparation de la requête d'extraction des inscriptions non annulées
 		$txt_req = "SELECT nom, prenom, anneeDebutBTS, ae_soirees.tarif , ae_inscriptions.id, dateInscription, nbrePersonnes, montantRegle, montantRembourse, idEleve, idSoiree, inscriptionAnnulee";
 		$txt_req .= " FROM ae_eleves, ae_inscriptions, ae_soirees"; 
@@ -943,6 +943,49 @@ class DAO
 		return $lesInscriptions;
 	}
 	
+	public function getLesInscriptionsAvecAnnulations()
+	{	// préparation de la requête d'extraction des inscriptions non annulées
+	    $txt_req = "SELECT nom, prenom, anneeDebutBTS, ae_soirees.tarif , ae_inscriptions.id, dateInscription, nbrePersonnes, montantRegle, montantRembourse, idEleve, idSoiree, inscriptionAnnulee";
+	    $txt_req .= " FROM ae_eleves, ae_inscriptions, ae_soirees";
+	    $txt_req .= " WHERE ae_eleves.id = ae_inscriptions.idEleve";
+	    $txt_req .=	" ORDER BY nom, prenom";
+	    $req = $this->cnx->prepare($txt_req);
+	    
+	    // extraction des données
+	    $req->execute();
+	    $uneLigne = $req->fetch(PDO::FETCH_OBJ);
+	    
+	    // construction d'une collection d'objets Inscription
+	    $lesInscriptions = array();
+	    
+	    // tant qu'une ligne est trouvée :
+	    while ($uneLigne)
+	    {	// création d'un objet Inscription
+	        $unId = utf8_encode($uneLigne->id);
+	        $unNom = utf8_encode($uneLigne->nom);
+	        $unPrenom = utf8_encode($uneLigne->prenom);
+	        $anneeDebutBTS = utf8_encode($uneLigne->anneeDebutBTS);
+	        $dateInscription = utf8_encode($uneLigne->dateInscription);
+	        $unNbrePersonnes = utf8_encode($uneLigne->nbrePersonnes);
+	        $montantRegle = utf8_encode($uneLigne->montantRegle);
+	        $montantRembourse = utf8_encode($uneLigne->montantRembourse);
+	        $idEleve = utf8_encode($uneLigne->idEleve);
+	        $idSoiree = utf8_encode($uneLigne->idSoiree);
+	        $inscriptionAnnulee = utf8_encode($uneLigne->inscriptionAnnulee);
+	        $unTarif = utf8_encode($uneLigne->tarif);
+	        
+	        $uneInscription = new Inscription($unId, $unNom, $unPrenom, $anneeDebutBTS, $dateInscription, $unNbrePersonnes, $montantRegle, $montantRembourse, $idEleve, $idSoiree, $inscriptionAnnulee, $unTarif);
+	        // ajout de l'inscription à la collection
+	        $lesInscriptions[] = $uneInscription;
+	        // extraction de la ligne suivante
+	        $uneLigne = $req->fetch(PDO::FETCH_OBJ);
+	    }
+	    // libère les ressources du jeu de données
+	    $req->closeCursor();
+	    
+	    return $lesInscriptions;
+	}
+	
 	public function purgerLesInscriptions()
 	{
 	    $txt_req = "DELETE FROM ae_inscriptions ";
@@ -951,7 +994,113 @@ class DAO
 	    $ok = $req->execute();
 	    return $ok;
 	}
-	
+	public function actualiserLesInscriptions($lesInscriptionsPayees, $lesInscriptionsAnnulees, $lesInscriptionsRemboursees , $lesInscriptionsInpayees, $lesInscriptionsConfirmees, $lesInscriptionsNonRemboursees)
+	{
+	    if(!empty ($lesInscriptionsPayees))
+	    {
+	        $txt_req ="UPDATE ae_inscriptions JOIN ae_soirees SET montantRegle = tarif ";
+    	    $txt_req .="WHERE ae_inscriptions.id IN (";
+    	    
+    	    foreach($lesInscriptionsPayees AS $uneInscriptionPayee) 
+    	    {
+    	        if($uneInscriptionPayee == array_values($lesInscriptionsPayees)[0])
+    	            $txt_req .=$uneInscriptionPayee;
+    	        else
+    	            $txt_req.= ", ".$uneInscriptionPayee;
+    	    }
+    
+    	        
+    	    $txt_req .=");";
+	    }
+	   
+	    
+	    if(!empty($lesInscriptionsAnnulees))
+	    {
+    	    $txt_req .=" UPDATE ae_inscriptions SET inscriptionAnnulee = '1' ";
+    	    $txt_req .="WHERE id IN (";
+    	    
+    	    foreach($lesInscriptionsAnnulees AS $uneInscriptionAnnulee)
+    	    {
+    	        if($uneInscriptionAnnulee == array_values($lesInscriptionsAnnulees)[0])
+    	            $txt_req .=$uneInscriptionAnnulee;
+    	        else
+    	            $txt_req.= ", ".$uneInscriptionAnnulee;
+    	    }
+    	        
+    	    $txt_req .=");";
+	    }
+
+	        
+	    if(!empty($lesInscriptionsRemboursees))
+	    {
+    	    $txt_req .=" UPDATE ae_inscriptions JOIN ae_soirees SET montantRembourse = tarif ";
+    	    $txt_req .="WHERE ae_inscriptions.id IN (";
+    	    foreach($lesInscriptionsRemboursees AS $uneInscriptionRemboursee)
+    	    {
+    	        if($uneInscriptionRemboursee == array_values($lesInscriptionsRemboursees)[0])
+    	            $txt_req .=$uneInscriptionRemboursee;
+    	        else
+    	            $txt_req.= ", ".$uneInscriptionRemboursee;
+    	    }
+    	        
+    	    $txt_req .=");";
+	    }
+
+	    if(!empty($lesInscriptionsInpayees))
+	    {
+    	    $txt_req .=" UPDATE ae_inscriptions JOIN ae_soirees SET montantRegle = 00.00 ";
+    	    $txt_req .="WHERE ae_inscriptions.id IN (";
+    	    
+    	    foreach($lesInscriptionsInpayees AS $uneInscriptionInpayee)
+    	    {
+    	        if($uneInscriptionInpayee == array_values($lesInscriptionsInpayees)[0])
+    	            $txt_req .=$uneInscriptionInpayee;
+    	        else 
+    	            $txt_req.= ", ".$uneInscriptionInpayee;
+    	    }
+    	    $txt_req .=");"; 
+	    }
+	    
+	    
+	    if(!empty($lesInscriptionsConfirmees))
+	    {
+    	    $txt_req .=" UPDATE ae_inscriptions SET inscriptionAnnulee = '0' ";
+    	    $txt_req .="WHERE id IN (";
+    	    
+    	    foreach($lesInscriptionsConfirmees AS $uneInscriptionConfirmee)
+    	    {
+    	        if($uneInscriptionConfirmee == array_values($lesInscriptionsConfirmees)[0])
+    	            $txt_req .=$uneInscriptionConfirmee;
+    	        else
+    	            $txt_req.= ", ".$uneInscriptionConfirmee;
+    	    }
+    	    
+    	    $txt_req .=");";
+	    }
+	    
+	    
+	    if(!empty($lesInscriptionsNonRemboursees))
+	    {
+    	    $txt_req .=" UPDATE ae_inscriptions JOIN ae_soirees SET montantRembourse = 00.00 ";
+    	    $txt_req .="WHERE ae_inscriptions.id IN (";
+    	    foreach($lesInscriptionsNonRemboursees AS $uneInscriptionNonRemboursee)
+    	    {
+    	        if($uneInscriptionNonRemboursee == array_values($lesInscriptionsNonRemboursees)[0])
+    	            $txt_req .=$uneInscriptionNonRemboursee;
+    	        else
+    	            $txt_req.= ", ".$uneInscriptionNonRemboursee;
+    	    }
+    	    
+    	    $txt_req .=");";
+	          
+	    }
+	    
+	     
+	     $req = $this->cnx->prepare($txt_req);
+	     $ok = $req->execute();
+	     return $ok;
+	    
+	}
 	// modifie l'inscription dans la bdd et retourne true si mise à jour effectuée correctement, retourne false en cas de problème
 	// créé par Nicolas Esteve  le XX/01/2016
 	// modifié par Killian BOUTIN le 28/05/2016

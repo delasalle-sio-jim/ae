@@ -2,6 +2,7 @@
 // Projet DLS - BTS Info - Anciens élèves
 // Fonction de la vue vues.jquery/VueModifierReglementsRemboursements.php : visualiser la vue de remboursement
 // Ecrit le 31/05/2016 par Killian BOUTIN
+// Modifié le 14/06/2021 par Baptiste DE BAILLIENCOURT
 
 /* MESSAGE D'ERREUR QUI NE S'AFFICHE PAS, LOGO DE RELOAD EN BOUCLE */
 ?>
@@ -82,58 +83,123 @@
 			<div data-role="content">
 				<h4 style="text-align: center;">Mise à jour des réglements et remboursements d'un élève</h4>
 				<form action="index.php?action=ModifierReglementsRemboursements" method="post" data-ajax="false">
-					<div data-role="fieldcontain" >
+								
+			<h3 class="titre_inscription"><?php echo $titre ?></h3>
+			
 
-						<p>
-							 <label for="listeEleves">Eleves: </label>
-		 					 <input type="email" id="listeEleves"   name="listeEleves" placeholder="Recherchez à l'aide de l'email de l'utilisateur" value = "<?php if (!empty ($_POST ["listeEleves"]) == true) echo $_POST ["listeEleves"]; else echo "";?>" pattern="^.+@.+\..+$" required>
-						</p>
-						<p>
-							<input type="submit" name="btnDetail" id="btnDetail" value="Obtenir les détails">
-						</p>	
-
-					<?php if ($etape == 1){?>
-						<p>
-							<label >Nombre de places réservées :</label>
-							<input type="text" value="<?php echo $unNbrePersonnes ?>" disabled>
-						</p>
-						<p>
-							<label >Date d'inscription :</label>
-							<input type="text" value="<?php echo $dateInscription ?>" disabled >
-						</p>
-						<p>
-							<label  for="txtMontantRegle">Montant réglé par l'élève :</label>
-							<input type="text" name="txtMontantRegle" id="txtMontantRegle" maxlength="20" placeholder="Montant regle à l'avance par l'élève"  value="<?php echo $montantRegle?>" >
-						</p>
-						<p>
-							<label for="txtMontantRembourse">Montant remboursé à l'élève :</label>
-							<input type="text" name="txtMontantRembourse" id="txtMontantRembourse" maxlength="20" placeholder="Montant rembourse à l'élève"  value="<?php echo $montantRembourse?>" >
-						</p>
-						<p>
-							<label>Coût total à payer par l'élève :</label>
-							<input type="text" value="<?php echo $montantTotal ?> €" disabled>
-						</p>
-						<p>
-							<label>Voulez-vous annuler l'inscription ?</label>
-							<fieldset data-role="controlgroup" data-type="vertical" required>
-								<input type="radio" onclick="$('#annulerInscription').slideDown(2);" name="radioAnnuler" id="radioAnnulerOui" value="oui" data-mini="true">
-								<label for="radioAnnulerOui">Oui</label>
-								<input type="radio" onclick="$('#caseConfirmation').attr('checked', false); $('#annulerInscription').hide(2);" name="radioAnnuler" id="radioAnnulerNon" value="non" data-mini="true" checked>
-								<label for="radioAnnulerNon">Non</label>
-							</fieldset>
-						</p>
-							<div id="annulerInscription" style="display: none">
-								<p>
-									<label>Veuillez confirmer l'annulation de l'inscription :</label>
-									<input style="margin: 3px 0px 0px -7px;" type=checkbox id="caseConfirmation" name="caseConfirmation">
-								</p>
-							</div>
-					</div>
+				<?php
+				
+				/* si le nombre d'inscrit n'est pas égal à 0 */
+				if ($nombreInscrits != 0 ){
+					/* création de la première ligne dans le tableau */
+					?>
 					
-					<div data-role="fieldcontain">
-						<input type="submit" value="Envoyer les données" name="btnModifier" id="btnModifier" data-mini="true">
-					</div>
-					<?php } ?>
+					<table class="tableau inscription inscriptionAdmin">
+						<thead>
+							<tr>
+								<th>Nom</th>
+								<th>Nb pers.</th>
+								<th>Promotion</th>
+								<th>Mt réglé</th>
+								<th>Mt remboursé</th>
+								<th>Reste dû</th>
+								<th>Payé ?</th>
+								<th>Annulé ?</th>
+								<th>Remboursé ?</th>
+							</tr>
+						</thead>
+						
+					<?php
+				
+					/* pour chaque $uneInscription de la collection $lesInscriptions */
+					foreach ($lesInscriptions as $uneInscription)
+					{
+						/*obtention du montant à régler puis du montant total à regler */
+						$montantRegle = $uneInscription->getMontantRegle();
+						$montantTotalRegle += $montantRegle;
+						
+						/* obtention du montant remboursé puis du montant total remboursé */
+						$montantRembourse = $uneInscription->getMontantRembourse();
+						$montantTotalRembourse += $montantRembourse;
+						
+						/* obtention du coût total à payer puis du montant final */
+						$coutTotal = $uneInscription->getTarif() * $uneInscription->getNbrePersonnes() - ($montantRegle + $montantRembourse);
+						if ($coutTotal <=0)
+						    $coutTotal =0;
+						$montantTotalFinal += $coutTotal;
+
+						/* on formate les nombres au format français */
+						$montantRegle = number_format($uneInscription->getMontantRegle(), 2, ',', ' ');
+						$montantRembourse = number_format($uneInscription->getMontantRembourse(), 2, ',', ' ');
+						$coutTotal = number_format($coutTotal, 2, ',', ' ');
+						
+						/* création d'une ligne du tableau */
+						?>
+						
+						<tr>
+							
+							<td><?php echo $uneInscription->getNom() . " " . $uneInscription->getPrenom() ?></td>
+							<td><?php echo $uneInscription->getNbrePersonnes() ?></td>
+							<td><?php echo $uneInscription->getAnneeDebutBTS() ?></td>
+							<td><?php echo $montantRegle ?> €</td>
+							<td><?php echo $montantRembourse ?> €</td>
+							<td><?php echo $coutTotal ?> €</td>
+							<?php if(($uneInscription->getMontantRegle() ) == ( $unTarif * $uneInscription->getNbrePersonnes()))
+                                    {
+                                   
+                                        $inscriptionPayee = 'on';
+                            
+                                    }
+                                    else           
+                                        $inscriptionPayee = 'off';
+                                    if($uneInscription->getInscriptionAnnulee() == 1)
+                                    {
+                                        $inscriptionAnnulee = 'on';
+                                    }
+                                    else 
+                                        $inscriptionAnnulee = 'off';
+                                    if($uneInscription->getMontantRembourse() == ( $unTarif * $uneInscription->getNbrePersonnes()))
+                                    {
+                                        $inscriptionRemboursee = 'on';
+                                    }
+                                    else 
+                                        $inscriptionRemboursee = 'off';
+                                    ?>
+							<td><input type="checkbox" name="Paye[]" value=<?php echo $uneInscription->getId()?> <?php if ($inscriptionPayee == 'on') echo 'checked'; ?>></td>
+							<td><input type="checkbox" name="Annule[]" value=<?php echo $uneInscription->getId()?> <?php if ($inscriptionAnnulee == 'on') echo 'checked'; ?>></td>
+							<td><input type="checkbox" name="Rembourse[]" value=<?php echo $uneInscription->getId()?> <?php if ($inscriptionRemboursee == 'on') echo 'checked'; ?>></td>
+						</tr>
+						
+						<?php
+						/* ajout du nombre d'inscrits de cet enregistrement au nombre total d'inscrits */
+						$nombreInscritsTotal += $uneInscription->getNbrePersonnes();
+	
+					} 
+					
+						/* on formate les nombres au format français */
+						$montantTotalRegle = number_format($montantTotalRegle, 2, ',', ' ');
+						$montantTotalRembourse = number_format($montantTotalRembourse, 2, ',', ' ');
+						$montantTotalFinal = number_format($montantTotalFinal, 2, ',', ' ');
+						
+						?>
+						<tr>
+							<td>Total</td>
+							<td><?php echo $nombreInscritsTotal ?> pers.</td>
+							<td>-</td>
+							<td><?php echo $montantTotalRegle ?> €</td>
+							<td><?php echo $montantTotalRembourse ?> €</td>
+							<td><?php echo $montantTotalFinal ?> €</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+						</tr>
+					</table>
+					<p>
+			<input type="submit" name="btnMaj" id="btnMaj" value="Mettre à jour les informations">
+			</p>
+				<?php 
+				}
+				?>
 				</form>
 			</div>
 

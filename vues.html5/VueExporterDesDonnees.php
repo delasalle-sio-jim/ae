@@ -58,23 +58,11 @@
 			
 			<h3>Sélectionnez les données à exporter :</h3>
 			
-			<form name="form1" id="form1" action="index.php?action=ExporterDesDonnees" method="post">
-			
-					<p>
-						<a href="exportations/ElevesParPromo.csv">Liste des élèves (triées par promo)</a>
-					</p>
-					<p>
-						<a href="exportations/Eleves.csv">Liste des élèves (triées par nom)</a>
-					</p>
-					<p>
-						<a href="exportations/Inscrits.csv">Liste des inscrits</a>
-					</p>
-					
-					<p>
-						<a href="exportations/NonInscrits.csv">Liste des non inscrits</a>
-					</p>
-					
+			<form name="form1" id="form1" action="index.php?action=ExporterDesDonnees" method="post">			
+								
 					<input type="submit" name="btnPDF" id="btnPDF" value="Télécharger la liste d'inscription">
+					<br></br>
+					<input type="submit" name="btnCSV" id="btnCSV" value="Exporter les élèves">
 			</form>				
 		</div>
 		

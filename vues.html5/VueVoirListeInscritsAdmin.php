@@ -2,6 +2,7 @@
 // Projet DLS - BTS Info - Anciens élèves
 // Fonction de la vue vues.html5/VueVoirListeInscritsAdmin.php : voir la liste des inscrits à la soirée des anciens élèves par un admin
 // Ecrit le 27/05/2016 par Killian BOUTIN
+// Modifié le 01/06/2021 par Baptiste de Bailliencourt
 
 ?>
 <!doctype html>

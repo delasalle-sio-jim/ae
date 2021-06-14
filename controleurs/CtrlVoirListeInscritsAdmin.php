@@ -20,7 +20,7 @@ if (! isset ($_POST ["btnMaj"])) {
     $lienRetour = '#page_principale';
     $themeFooter = $themeNormal;
     // récupère les détails des inscriptions pour les afficher
-    $lesInscriptions = $dao->getLesInscriptions();
+    $lesInscriptions = $dao->getLesInscriptionsSansAnnulations();
     
     /* récupération du nombre d'inscriptions */
     
@@ -29,6 +29,7 @@ if (! isset ($_POST ["btnMaj"])) {
     foreach ($lesInscriptions as $uneInscription)
     {
         $nombreInscrits += $uneInscription->getNbrePersonnes();
+        
     }
     $themeFooter = $themeNormal;
     
@@ -64,7 +65,7 @@ else {
     
     
     // récupère les détails des inscriptions pour les afficher
-    $lesInscriptions = $dao->getLesInscriptions();
+    $lesInscriptions = $dao->getLesInscriptionsSansAnnulations();
     
     /* récupération du nombre d'inscriptions */
     

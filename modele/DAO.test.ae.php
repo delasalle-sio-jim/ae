@@ -508,12 +508,12 @@ echo ('<br>');
 */
 
 /*
-// test de la méthode getLesInscriptions ---------------------------------------------------------
+// test de la méthode getLesInscriptionsSansAnnulations ---------------------------------------------------------
 // créé par le 25/05/2016 Killian BOUTIN
 // modifié le 26/05/2015 par Killian BOUTIN 
 
-echo "<h3>Test de getLesInscriptions : </h3>";
-$lesInscriptions = $dao->getLesInscriptions();
+echo "<h3>Test de getLesInscriptionsSansAnnulations : </h3>";
+$lesInscriptions = $dao->getLesInscriptionsSansAnnulations();
 $nbReponses = sizeof($lesInscriptions);
 echo "<p>Nombre d'inscriptions : " . $nbReponses . "</p>";
 

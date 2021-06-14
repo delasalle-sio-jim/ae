@@ -18,7 +18,7 @@ $unEleve = $dao->getEleve($adrMail);
 $idEleve = $unEleve->getId();
 $eleveInscrit = $dao->getInscriptionEleve($idEleve);
 
-$lesInscriptions = $dao->getLesInscriptions();
+$lesInscriptions = $dao->getLesInscriptionsSansAnnulations();
 
 // on prend les données à afficher dans les Vues
 setlocale (LC_TIME, 'fr_FR.utf8','fra');
