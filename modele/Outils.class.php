@@ -127,7 +127,7 @@ class Outils
 		$temporaire = str_replace ("à", "a", $temporaire);
 		$temporaire = str_replace ("ô", "o", $temporaire);
 		$temporaire = str_replace ("î", "i", $temporaire);
-		$temporaire = strtoupper ($temporaire);
+		$temporaire = mb_strtoupper ($temporaire);
 		$temporaire = str_replace ("SAINTE ", "Ste ", $temporaire);
 		$temporaire = str_replace ("SAINTE-", "Ste ", $temporaire);
 		$temporaire = str_replace ("SAINT ", "St ", $temporaire);
@@ -143,14 +143,14 @@ class Outils
 			if ($position == "")
 			{	$partie1 = substr ($lePrenom, 0 , 1);
 				$partie2 = substr ($lePrenom, 1 , $longueur-1);
-				$lePrenom = strtoupper($partie1) . strtolower($partie2);
+				$lePrenom = mb_strtoupper($partie1) . strtolower($partie2);
 			}
 			else
 			{	$partie1 = substr ($lePrenom, 0 , 1);
 				$partie2 = substr ($lePrenom, 1 , $position-1);
 				$partie3 = substr ($lePrenom, $position + 1, 1);
 				$partie4 = substr ($lePrenom, $position + 2, $longueur-$position-2);
-				$lePrenom = strtoupper($partie1) . strtolower($partie2) . "-" . strtoupper($partie3) . strtolower($partie4);
+				$lePrenom = mb_strtoupper($partie1) . strtolower($partie2) . "-" . mb_strtoupper($partie3) . strtolower($partie4);
 			}
 		}
 		return $lePrenom;
@@ -271,7 +271,7 @@ class Outils
 	// fournit null dans les autres cas
 	// créé par Jim le 18/6/2016
 	public static function getImageByNomFichier ($nomFichierSource) {
-		$extensionFichier = strtoupper(strrchr($nomFichierSource, '.'));	
+		$extensionFichier = mb_strtoupper(strrchr($nomFichierSource, '.'));	
 		switch ($extensionFichier) {
 			case '.JPG'  : { return imagecreatefromjpeg($nomFichierSource); break; }
 			case '.JPEG' : { return imagecreatefromjpeg($nomFichierSource); break; }
@@ -285,7 +285,7 @@ class Outils
 	// fournit true si l'enregistrement s'est bien passé, false autrement
 	// créé par Jim le 18/6/2016
 	public static function enregistrerImageDansFichier ($uneImage, $nomFichierDestination) {
-		$extensionFichier = strtoupper(strrchr($nomFichierDestination, '.'));
+		$extensionFichier = mb_strtoupper(strrchr($nomFichierDestination, '.'));
 		switch ($extensionFichier) {
 			case '.JPG'  : { imagejpeg ($uneImage, $nomFichierDestination); return true; break; }
 			case '.JPEG' : { imagejpeg ($uneImage, $nomFichierDestination); return true; break; }
@@ -323,7 +323,7 @@ class Outils
 		// mémoriser les noms complets des fichiers et l'extension
 		$nomFichierSource = $nomDossierSource . $nomFichierPhoto;
 		$nomFichierDestination = $nomDossierDestination . $nomFichierPhoto;
-		$extensionFichier = strtoupper(strrchr($nomFichierPhoto, '.'));
+		$extensionFichier = mb_strtoupper(strrchr($nomFichierPhoto, '.'));
 	
 		$imageSource = Outils::getImageByNomFichier($nomFichierSource);
 		if ( ! $imageSource) return false;

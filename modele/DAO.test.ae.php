@@ -824,10 +824,10 @@ if (!empty ($_FILES['filePhoto'])){
 	/* Deplacement de la photo téléchargé dans le dossier => photos.initiales/ */
 	move_uploaded_file($_FILES['filePhoto']['tmp_name'], $uneSource . $uneImage);
 	
-	$toUpperImage = strtoupper($_FILES['filePhoto']['tmp_name']);
+	$toUpperImage = mb_strtoupper($_FILES['filePhoto']['tmp_name']);
 	echo "<br>L'extension de l'image avant de la déplacer est " . strrchr($toUpperImage, '.') . ".<br>";
 	
-	$toUpperImage =  strtoupper($uneSource . $uneImage);
+	$toUpperImage =  mb_strtoupper($uneSource . $uneImage);
 	echo "L'extension de l'image après l'avoir déplacé est " .  strrchr($toUpperImage, '.') . ".<br>";
 	echo "La largeur était de " . getimagesize($uneSource . $uneImage)[0] . " et la hauteur de " .	$src_w = getimagesize($uneSource . $uneImage)[1] . ".<br>";
 	

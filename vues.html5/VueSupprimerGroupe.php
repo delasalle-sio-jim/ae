@@ -77,7 +77,7 @@
 		</div>
 			
 		<div id="content">
-		<h2>Modifier un groupe</h2>
+		<h2>Supprimer un groupe</h2>
 		<form name="form1" id="form1" action="index.php?action=SupprimerGroupe" method="post">
 				<p>
 					<label for="listeGroupes">Le groupe à supprimer :</label>

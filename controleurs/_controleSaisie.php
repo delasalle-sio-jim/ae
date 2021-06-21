@@ -89,7 +89,7 @@ else
 		if ($instructionJS == "") $instructionJS = "document.form1.txtNom.focus();";	// placer le focus sur la zone � corriger
 	}
 	else
-	{	$nom = strtoupper ($nom);
+	{	$nom = mb_strtoupper ($nom);
 		$class_nom = "normal";
 	}
 	

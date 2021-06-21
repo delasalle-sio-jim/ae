@@ -52,7 +52,7 @@ class DAO
 	    $txt_req .= " VALUES (:nomGroupe)";
 	    $req = $this->cnx->prepare($txt_req);
 	    // liaison de la requête et de ses paramètres
-	    $req->bindValue("nomGroupe", utf8_decode(($unGroupe->getNomGroupe())), PDO::PARAM_STR);
+	    $req->bindValue("nomGroupe",utf8_decode($unGroupe->getNomGroupe()), PDO::PARAM_STR);
 	    // exécution de la requête
 	    $ok = $req->execute();
 	    
@@ -170,7 +170,7 @@ class DAO
 	    $ok = $req->execute();
 	    $uneLigne = $req->fetch(PDO::FETCH_OBJ);
 	    $id = utf8_decode($uneLigne->id);
-	    $nomSurBouton = utf8_decode($uneLigne->nomSurBouton);
+	    $nomSurBouton = utf8_encode($uneLigne->nomSurBouton);
 	    $nomDuFichier = utf8_decode($uneLigne->nomDuFichier);
 	    $idGroupe = utf8_decode($uneLigne->idGroupe);
 	    
@@ -197,10 +197,10 @@ class DAO
 	    while ($uneLigne)
 	    {
 	        // création d'un objet Groupe
-	        $id = utf8_decode($uneLigne->id);
-	        $nomSurBouton = utf8_decode($uneLigne->nomSurBouton);
-	        $nomDuFichier = utf8_decode($uneLigne->nomDuFichier);
-	        $idGroupe = utf8_decode($uneLigne->idGroupe);
+	        $id =$uneLigne->id;
+	        $nomSurBouton = $uneLigne->nomSurBouton;
+	        $nomDuFichier = $uneLigne->nomDuFichier;
+	        $idGroupe =$uneLigne->idGroupe;
 	        
 	        $unDocument = new Document($id, $nomSurBouton, $nomDuFichier, $idGroupe);
 	        
@@ -231,10 +231,10 @@ class DAO
 	    while ($uneLigne)
 	    {
 	        // création d'un objet Document
-	        $id = utf8_decode($uneLigne->id);
-	        $nomSurBouton = utf8_decode($uneLigne->nomSurBouton);
-	        $nomDuFichier = utf8_decode($uneLigne->nomDuFichier);
-	        $idGroupe = utf8_decode($uneLigne->idGroupe);
+	        $id = utf8_encode($uneLigne->id);
+	        $nomSurBouton = utf8_encode($uneLigne->nomSurBouton);
+	        $nomDuFichier = utf8_encode($uneLigne->nomDuFichier);
+	        $idGroupe = utf8_encode($uneLigne->idGroupe);
 	        
 	        $unDocument = new Document($id, $nomSurBouton, $nomDuFichier, $idGroupe);
 	        
@@ -264,8 +264,8 @@ class DAO
 	    while ($uneLigne)
 	    {
 	        // création d'un objet Groupe
-	        $id = utf8_decode($uneLigne->id);
-	        $nomGroupe = utf8_decode($uneLigne->nomGroupe);
+	        $id = $uneLigne->id;
+	        $nomGroupe = utf8_encode($uneLigne->nomGroupe);
 	        
 	        $unGroupe = new Groupe($id, $nomGroupe);
 	        
@@ -296,11 +296,11 @@ class DAO
 	    // tant qu'une ligne est trouvée :
 	    while ($uneLigne)
 	    {	
-	        $unId = utf8_decode($uneLigne->idDocument);
-	        $unNomSurBouton = utf8_decode($uneLigne->nomSurBouton);
-	        $unNomDuFichier = utf8_decode($uneLigne->nomDuFichier);
-	        $unIdGroupe = utf8_decode($uneLigne->idGroupe);
-	        $unNomGroupe = utf8_decode($uneLigne->nomGroupe);
+	        $unId = utf8_encode($uneLigne->idDocument);
+	        $unNomSurBouton = utf8_encode($uneLigne->nomSurBouton);
+	        $unNomDuFichier = utf8_encode($uneLigne->nomDuFichier);
+	        $unIdGroupe = utf8_encode($uneLigne->idGroupe);
+	        $unNomGroupe = utf8_encode($uneLigne->nomGroupe);
 	        
 	        if($unGroupe == null || $unDocument->getIdGroupe() != $unIdGroupe)
 	        {

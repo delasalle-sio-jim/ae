@@ -29,7 +29,7 @@ class Administrateur
 		$this->adrMail = $uneAdrMail;
 		$this->motDePasse = $unMotDePasse;
 		$this->prenom = Outils::corrigerPrenom($unPrenom);
-		$this->nom = strtoupper($unNom);
+		$this->nom = mb_strtoupper($unNom);
 	}
 
 	// ------------------------------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ class Administrateur
 	public function setPrenom($unPrenom) {$this->prenom = Outils::corrigerPrenom($unPrenom);}
 
 	public function getNom() {return $this->nom;}
-	public function setNom($unNom) {$this->nom = strtoupper($unNom);}
+	public function setNom($unNom) {$this->nom = mb_strtoupper($unNom);}
 
 	// ------------------------------------------------------------------------------------------------------
 	// -------------------------------------- Méthodes d'instances ------------------------------------------

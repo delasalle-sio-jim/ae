@@ -19,32 +19,24 @@ $soiree = $dao->getSoiree($relire);
 $lesInscriptions = $dao->getLaListeInscriptions();
 $x = 173;
 $y = 61;
-$lesEleves = $dao->getLesEleves();
-if(!isset ($_POST ["btnPDF"]) && !isset($_POST ["btnCSV"]))
+if(!isset ($_POST ["btnPDF"]) && !isset($_POST ["btnCSV"]) && !isset($_POST ["btnMail"]))
 {
     include_once ($cheminDesVues . 'VueExporterDesDonnees.php');
 }
 if ( isset ($_POST["btnCSV"]))
 {
-        function ExporterLesEleves($lesEleves){
-            $excel =  "Nom;Prénom;Année de début de BTS;Mail;\n";
-            foreach($lesEleves as $unEleve) {
-                $unMail = 
-                $excel .= $unEleve->getNom().";".$unEleve->getPrenom().";".$unEleve->getAnneeDebutBTS().";".$unEleve->getAdrMail()."; \n";
-            }
-            header('Content-Encoding: UTF-8');
-            header("Content-type: application/vnd.ms-excel; charset=UTF-8");
-            header("Content-disposition: attachment; filename=ListeDesEleves.csv");
-            echo pack('H*','EFBBBF');
-            print $excel;
-            exit;
-        
-        }
-    ExporterLesEleves($lesEleves);
+     
+    $dao->ExporterLesEleves();
+    include_once ($cheminDesVues . 'VueExporterDesDonnees.php');
+}
+
+if ( isset ($_POST["btnMail"]))
+{
+    $dao->ExporterLesMails();
     include_once ($cheminDesVues . 'VueExporterDesDonnees.php');
 }
 if ( isset ($_POST ["btnPDF"]) ) {
-    require('fpdf/fpdf.php');
+    require('modele/fpdf/fpdf.php');
     class PDF extends FPDF
     {
         // En-tête
@@ -58,8 +50,10 @@ if ( isset ($_POST ["btnPDF"]) ) {
             $this->Cell(80);
             // Titre
             $this->Cell(30,10,'GESTION DES PAYEMENTS DE LA SOIREE',0,0,'C');
+
             // Saut de ligne
             $this->Ln(30);
+            $this->Cell(55,10,iconv("UTF-8", "CP1252", "Liste du ".date("d/m/Y",$t)." à ".date("H:i",$t)),0,1);
         }
         
         // Pied de page
@@ -79,7 +73,6 @@ if ( isset ($_POST ["btnPDF"]) ) {
     $pdf->AliasNbPages();
     $pdf->SetTitle('GESTION DES PAYEMENTS DE LA SOIREE', true);
 	$pdf->SetFont('Arial','',16);
-	$pdf->Cell(55,10,iconv("UTF-8", "CP1252", "Liste du ".date("d/m/Y",$t)." à ".date("H:i",$t)),0,1);
 	$pdf->SetFont('Arial','B',16);
     $pdf->Cell(55,10,iconv("UTF-8", "CP1252", "Nom"),1,0);
     $pdf->Cell(55,10,iconv("UTF-8", "CP1252", "Prenom"),1,0);
@@ -104,7 +97,7 @@ if ( isset ($_POST ["btnPDF"]) ) {
             $pdf->SetFont('Arial','',8.5);
         }
         
-        $pdf->Cell(55,10,iconv("UTF-8", "CP1252", $unNom),1,0);
+        $pdf->Cell(55,10,$unNom,1,0);
         
         if (strlen($unPrenom)<=15)
         {
@@ -118,16 +111,16 @@ if ( isset ($_POST ["btnPDF"]) ) {
         {
             $pdf->SetFont('Arial','',11.5);
         }
-        $pdf->Cell(55,10,iconv("UTF-8", "CP1252", $unPrenom),1,0);
+        $pdf->Cell(55,10,$unPrenom,1,0);
         $pdf->SetFont('Arial','',16);
         $pdf->Cell(10,10,$unNbrePersonnes,1,0);
         $pdf->Cell(30,10,$unMontant.iconv("UTF-8", "CP1252", " €"),1,0);
         $pdf->Cell(35,10, $pdf->Rect($x,$y,8,8),1,1);
         $y=$y+10;
         if ($y >= 270)
-            $y=41;
+            $y=51;
     }
-    $pdf->Output("Liste payements ".substr($soiree->getDateSoiree(),0,4).".pdf","I");
+    $pdf->Output("Liste payements ".substr($soiree->getDateSoiree(),0,4).".pdf","D");
 }
 
 unset($dao);		// fermeture de la connexion à MySQL

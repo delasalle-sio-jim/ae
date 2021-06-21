@@ -74,7 +74,7 @@ else{
 			$extension = strrchr($_FILES['filePhoto']['name'], '.');
 			
 			/* On regarde si l'extension du fichié téléchargé est correcte, sinon on affiche un message d'avertissement */
-			if (!in_array(strtoupper($extension), $listeExtensions)){
+			if (!in_array(mb_strtoupper($extension), $listeExtensions)){
 				$message ="Veuillez choisir une image de type .png, .jpg ou .jpeg.";
 				$typeMessage = 'avertissement';
 				$lienRetour = '#page_principale';

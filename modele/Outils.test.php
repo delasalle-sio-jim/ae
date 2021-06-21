@@ -61,10 +61,10 @@ if ( ! empty ($_FILES['filePhoto'])) {
 	// Déplacement de la photo téléchargée dans le dossier => photos.initiales/
 	move_uploaded_file($nomFichierTemporaire, $nomCompletFichierSource);
 	
-	$extensionFichier = strtoupper(strrchr($nomFichierTemporaire, '.'));
+	$extensionFichier = mb_strtoupper(strrchr($nomFichierTemporaire, '.'));
 	echo "<br>L'extension de l'image avant de la déplacer est " . $extensionFichier . ".<br>";
 	
-	$extensionFichier = strtoupper(strrchr($nomCompletFichierSource, '.'));
+	$extensionFichier = mb_strtoupper(strrchr($nomCompletFichierSource, '.'));
 	echo "L'extension de l'image après l'avoir déplacée est " .  $extensionFichier . ".<br>";
 	
 	// Récupération de la taille de l'image avant le redimensionnement

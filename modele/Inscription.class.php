@@ -33,7 +33,7 @@ class Inscription
 	
 	public function Inscription($unId, $unNom, $unPrenom, $anneeDebutBTS, $dateInscription, $unNbrePersonnes, $montantRegle, $montantRembourse, $idEleve, $idSoiree, $inscriptionAnnulee, $leTarif) {
 		$this->id = $unId;
-		$this->nom = strtoupper($unNom);
+		$this->nom = mb_strtoupper($unNom);
 		$this->prenom = Outils::corrigerPrenom($unPrenom);
 		$this->anneeDebutBTS = $anneeDebutBTS;
 		$this->dateInscription = $dateInscription;
@@ -83,7 +83,7 @@ class Inscription
 	public function setInscriptionAnnulee($inscriptionAnnulee) {$this->inscriptionAnnulee = $inscriptionAnnulee;}
 	
 	public function getNom() {return $this->nom;}
-	public function setNom($unNom) {$this->nom = strtoupper($unNom);}
+	public function setNom($unNom) {$this->nom = mb_strtoupper($unNom);}
 	
 	public function getPrenom() {return $this->prenom;}
 	public function setPrenom($unPrenom) {$this->prenom = Outils::corrigerPrenom($unPrenom);}

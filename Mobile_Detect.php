@@ -722,7 +722,7 @@ class Mobile_Detect
         // are we using PHP-flavored headers?
         if (strpos($header, '_') === false) {
             $header = str_replace('-', '_', $header);
-            $header = strtoupper($header);
+            $header = mb_strtoupper($header);
         }
 
         // test the alternate, too
@@ -777,7 +777,7 @@ class Mobile_Detect
         $response = false;
         foreach ($cfHeaders as $key => $value) {
             if (substr(strtolower($key), 0, 16) === 'http_cloudfront_') {
-                $this->cloudfrontHeaders[strtoupper($key)] = $value;
+                $this->cloudfrontHeaders[mb_strtoupper($key)] = $value;
                 $response = true;
             }
         }

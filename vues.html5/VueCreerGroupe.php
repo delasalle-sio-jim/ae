@@ -6,7 +6,8 @@
 <!doctype html>
 <html>
 <head>	
-	<?php include_once ('head.php'); ?>
+	<?php include_once ('head.php');
+	include_once ('modele/DAO.class.portail.php');?>
 	<script>
 		window.onload = initialisations;
 		
@@ -59,7 +60,7 @@
 
 				<p>
 					<label for="txtNom">Nom du groupe * :</label>
-					<input type="text" name="txtNom" id="txtNom" maxlength="100" required=true/>
+					<input type="text" name="txtNom" id="txtNom" maxlength="100" required=true value="<?php echo $unNomDeGroupe; ?>"/>
 
 				</p>						
 				<p>

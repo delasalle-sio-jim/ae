@@ -1,7 +1,7 @@
 /* Feuille de styles de la version HTML5 pour terminaux fixes */
-/* Modifié le 06/06/2016 par Killian BOUTIN */
+/* Modifiï¿½ le 06/06/2016 par Killian BOUTIN */
 
-/* ----------------- Mise en forme de la structure générale -------------------- */
+/* ----------------- Mise en forme de la structure gï¿½nï¿½rale -------------------- */
 
 * {
   margin: 0; padding: 0;
@@ -25,7 +25,7 @@ div#page {
 	-khtml-border-radius: 15px;
 	border-radius: 15px;
 	
-	/* fond avec un dégradé de couleur (blanc en haut, gris léger en bas) */
+	/* fond avec un dï¿½gradï¿½ de couleur (blanc en haut, gris lï¿½ger en bas) */
 	background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(210, 210, 210));
 	background: -webkit-gradient(linear, left top, left bottom, from(rgb(255, 255, 255)), to(rgb(210, 210, 210)));
 	background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(210, 210, 210));
@@ -38,12 +38,12 @@ body {
 	margin: 0;
 	padding: 10px 0 0 0;
 	
-	/* fond avec un dégradé de couleur (blanc en haut, gris en bas) */
+	/* fond avec un dï¿½gradï¿½ de couleur (blanc en haut, gris en bas) */
 	background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(210, 210, 210));
 	background: -webkit-gradient(linear, left top, left bottom, from(rgb(255, 255, 255)), to(rgb(210, 210, 210)));
 	background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(210, 210, 210));
 	
-	/* pour permettre au dégradé d'agir sur l'ensemble de l'écran */
+	/* pour permettre au dï¿½gradï¿½ d'agir sur l'ensemble de l'ï¿½cran */
 	background-attachment: fixed;
 }
 
@@ -55,11 +55,11 @@ html {
 
 /* style de la division id="footer" */
 div#footer {
-	/* hauteur, padding, marge en haut, couleur d'arrière-plan */
+	/* hauteur, padding, marge en haut, couleur d'arriï¿½re-plan */
 	height: 36px;
 	padding: 0; 
 	margin: 20px 0 0 0;
-	background-color: #00A3E4;
+	background-color: #3baa38; /*#00A3E4;*/
 	
 	/* coins arrondis en bas uniquement */
 	-moz-border-radius: 0 0 15px 15px;
@@ -85,7 +85,7 @@ div#content {
 	margin: 0;
 }
 
-/* style pour la carte d'affichage du lieu de la soirée dans VoirDetailsSoiree */
+/* style pour la carte d'affichage du lieu de la soirï¿½e dans VoirDetailsSoiree */
 div#map_canvas{
 	position: absolute;
 	margin : -180px 0 0 420px;
@@ -103,11 +103,11 @@ div#header {
 
 /* style de la division id="header-menu" */
 div#header-menu {
-	/* hauteur, padding, marge, couleur d'arrière-plan */
+	/* hauteur, padding, marge, couleur d'arriï¿½re-plan */
 	height: 36px;
 	padding: 0;
 	margin: 0;
-	background: #00A3E4;
+	background: #3baa38; /*#00A3E4;*/
 	
 	
 	/* coins arrondis en haut uniquement */
@@ -126,7 +126,7 @@ ul#menu-horizontal {
 	list-style-type: none; 
 }
 
-/* style des éléments <li> de la liste <ul id="menu-horizontal"> */
+/* style des ï¿½lï¿½ments <li> de la liste <ul id="menu-horizontal"> */
 ul#menu-horizontal li {
 	padding: 0;
 	margin: 0;
@@ -135,7 +135,7 @@ ul#menu-horizontal li {
 	text-align: center
 }
 
-/* style des liens hypertextes contenus dans les éléments <li> de la liste <ul id="menu-horizontal"> */
+/* style des liens hypertextes contenus dans les ï¿½lï¿½ments <li> de la liste <ul id="menu-horizontal"> */
 ul#menu-horizontal li a {
 	border-right: #fff 2px solid; 
 	display: block; 
@@ -149,10 +149,10 @@ ul#menu-horizontal li a {
 
 /* modification de couleur au survol de la souris */
 ul#menu-horizontal li a:hover {
-	background: #0b4c8e;
+	background: #247023;
 }
 
-/* ajout d'un coin arrondi (en haut et à gauche) au premier lien uniquement lors du survol de la souris */
+/* ajout d'un coin arrondi (en haut et ï¿½ gauche) au premier lien uniquement lors du survol de la souris */
 ul#menu-horizontal li:first-child a:hover {
 	-moz-border-radius: 15px 0 0 0;
 	-webkit-border-radius: 15px 0 0 0;
@@ -162,7 +162,7 @@ ul#menu-horizontal li:first-child a:hover {
 	border-radius: 15px 0 0 0;
 }
 
-/* style des liens hypertextes contenus dans les éléments <li id="reseau"> de la liste <ul id="menu-horizontal"> */
+/* style des liens hypertextes contenus dans les ï¿½lï¿½ments <li id="reseau"> de la liste <ul id="menu-horizontal"> */
 ul#menu-horizontal li#reseau a {
 	padding-top: 5px;
 	width: 50px;
@@ -172,11 +172,11 @@ ul#menu-horizontal li#reseau a {
 
 /* modification de couleur au survol de la souris des li pour reseaux sociaux */
 ul#menu-horizontal li#reseau a:hover {
-	background: #0b4c8e;
+	background: #247023;
 	height: 31px; /* On enleve les 5 pixels du "padding-top" qui aligne l'icone au centre du header */
 }
 
-/* ajout d'un coin arrondi (en haut et à droite) au dernier lien uniquement lors du survol de la souris */
+/* ajout d'un coin arrondi (en haut et ï¿½ droite) au dernier lien uniquement lors du survol de la souris */
 ul#menu-horizontal li#reseau:last-child a:hover {
 	-moz-border-radius: 0 15px 0 0;
 	-webkit-border-radius: 0 15px 0 0;
@@ -213,24 +213,24 @@ img#logo-droite {
 
 /* style des balises <h2> de la division <div id="content"> */
 div#content h2 {
-	/* marge supérieure */
+	/* marge supï¿½rieure */
 	margin-top: 10px;
 	
-	/* padding à gauche pour pouvoir y placer une image */
+	/* padding ï¿½ gauche pour pouvoir y placer une image */
 	padding-left: 35px;
 	
 	/* taille et couleur de la police, et hauteur de ligne */
 	font-size: 1.4em;
-	color: #0b4c8e;
+	color: #000000; /*#247023;*/
 	line-height: 25px;
 	cursor: default;
 	
-	/* ajout d'une image à gauche */
+	/* ajout d'une image ï¿½ gauche */
 	background: url(../images/puce.png) no-repeat left bottom;
 	
 	/* ajout d'une bordure au-dessus et en-dessous */
-	border-top: #0b4c8e 1px solid;
-	border-bottom: #0b4c8e 1px solid;
+	border-top: #1d591c 1px solid;
+	border-bottom: #1d591c 1px solid;
 }
 
 /* style des balises <h3> de la division <div id="content"> */
@@ -241,7 +241,7 @@ div#content h3 {
 	/* taille et couleur de la police */
 	font: 1.2em Verdana, Arial, Helvetica, sans-serif;
 	font-weight: bold;
-	color: #0b4c8e;
+	color: #247023;
 	cursor: default;
 }
 
@@ -273,7 +273,7 @@ div#content a {
 
 /* style des balises <a> de la division <div id="content"> lors du survol par la souris */
 div#content a:hover {
-	color: #0b4c8e;
+	color: #247023;
 	font-weight: bold;
 }
 
@@ -302,7 +302,7 @@ div#menu-vertical h3 {
 	/* taille et couleur de la police */
 	font: 1.2em Verdana, Arial, Helvetica, sans-serif;
 	font-weight: bold;
-	color: #0b4c8e;
+	color: #247023;
 }
 
 /* style des balises <a> contenues dans les titres <h3> de la <div id="menu-vertical"> */
@@ -316,17 +316,17 @@ div#menu-vertical .menu {
 	/* border-bottom: 1px solid #333; */
 }
 
-/* style des <div> qui suivent immédiatement un <h3> */
+/* style des <div> qui suivent immï¿½diatement un <h3> */
 div#menu-vertical h3 + div {
-	/* hauteur nulle pour fermer la boîte */
+	/* hauteur nulle pour fermer la boï¿½te */
 	height: 0;
-	/* masquage du débordement */
+	/* masquage du dï¿½bordement */
 	overflow: hidden;
 }
 
-/* style des <div> qui suivent immédiatement un <h3> ciblées (target) par les liens hypertextes */
+/* style des <div> qui suivent immï¿½diatement un <h3> ciblï¿½es (target) par les liens hypertextes */
 div#menu-vertical :target h3 + div {
-	/* hauteur de la boîte */
+	/* hauteur de la boï¿½te */
 	height: auto;
 }	
 
@@ -334,12 +334,12 @@ div#menu-vertical :target h3 + div {
 div#menu-vertical a.bouton-menu {
 	/* police, couleur et alignement du texte, style du lien */
 	font: 1.1em Arial, Helvetica, sans-serif;
-	color: #0b4c8e;
+	color: #247023;
 	text-align: center;
 	text-decoration: none;
 	font-weight: bold;
 
-	/* ombre portée du texte du bouton */
+	/* ombre portï¿½e du texte du bouton */
 	text-shadow: 0 1px 0 #fff;
 		
 	/* dimensions, margin, padding, type d'affichage, bordure */
@@ -357,12 +357,12 @@ div#menu-vertical a.bouton-menu {
 	-khtml-border-radius: 7px;
 	border-radius: 7px;
 	
-	/* fond avec un dégradé de couleur (blanc en haut, gris en bas) */
+	/* fond avec un dï¿½gradï¿½ de couleur (blanc en haut, gris en bas) */
 	background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(220, 220, 220));
 	background: -webkit-gradient(linear, right top, right bottom, from(rgb(255, 255, 255)), to(rgb(220, 220, 220)));
 	background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(220, 220, 220));
 	
-	/* ombre portée du bouton */
+	/* ombre portï¿½e du bouton */
 	-webkit-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
 	-moz-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
 	-o-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.3);
@@ -371,7 +371,7 @@ div#menu-vertical a.bouton-menu {
 
 /* modification au survol des liens hypertextes <a> avec l'attribut class="bouton-menu" */
 div#menu-vertical a.bouton-menu:hover {
-	/* fond avec un dégradé de couleur (blanc en haut, gris plus soutenu en bas) */
+	/* fond avec un dï¿½gradï¿½ de couleur (blanc en haut, gris plus soutenu en bas) */
 	background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(200, 200, 200));
 	background: -webkit-gradient(linear, right top, right bottom, from(rgb(255, 255, 255)), to(rgb(200, 200, 200)));
 	background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(200, 200, 200));
@@ -388,27 +388,27 @@ table {
 	width: 700px;
 	margin: 30px auto 30px auto;
 	
-	/* arrière-plan */
+	/* arriï¿½re-plan */
 	background-color: rgb(230, 230, 230);
 }
 
-/* styles des tableaux ayant la propriété class="tableau" */
+/* styles des tableaux ayant la propriï¿½tï¿½ class="tableau" */
 .tableau {
 	/* bordure pour l'ensemble du tableau */
-	border: 1px solid #0b4c8e;
+	border: 1px solid #247023;
 	
 	/* coins arrondis */
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
 	
-	/* ombre légère */
+	/* ombre lï¿½gï¿½re */
 	-webkit-box-shadow: 1px 3px 3px #ccc;
 	-moz-box-shadow: 1px 3px 3px #ccc;
 	box-shadow: 1px 3px 3px #ccc;
 }
 
-/* le style de class="inscription" est placé avant le style de class="tableau" pour que les modifications des couleurs n'affectent pas la première et la dernière ligne (avec even et odd) */
+/* le style de class="inscription" est placï¿½ avant le style de class="tableau" pour que les modifications des couleurs n'affectent pas la premiï¿½re et la derniï¿½re ligne (avec even et odd) */
 
 /* style des lignes paires du tableau de la vue "VueVoirListeInscrits */
 .inscription tr:nth-child(even){
@@ -435,72 +435,72 @@ table {
 	width: 25%;
 }
 
-/* styles des cellules des tableaux ayant la propriété class="tableau" */
+/* styles des cellules des tableaux ayant la propriï¿½tï¿½ class="tableau" */
 .tableau td, .tableau th {
-	/* les cellules sont encadrés en haut et à gauche */
-	border-left: 1px solid #0b4c8e;
-	border-top: 1px solid #0b4c8e;
+	/* les cellules sont encadrï¿½s en haut et ï¿½ gauche */
+	border-left: 1px solid #247023;
+	border-top: 1px solid #247023;
 	padding: 5px;
 	text-align: center;
 }
 
-/* styles des premières cellules <th> et <td> à gauche */
+/* styles des premiï¿½res cellules <th> et <td> ï¿½ gauche */
 .tableau td:first-child, .tableau th:first-child {
-	/* l'encadrement gauche des cellules de gauche est supprimé */
+	/* l'encadrement gauche des cellules de gauche est supprimï¿½ */
 	border-left: none;
 }
 
 /* styles des cellules <th> */
 .tableau th {
-	/* l'encadrement supérieur des cellules <th> est supprimé */
+	/* l'encadrement supï¿½rieur des cellules <th> est supprimï¿½ */
 	border-top: none;
 }
 
-/* styles des premières cellules <td> à gauche */
+/* styles des premiï¿½res cellules <td> ï¿½ gauche */
 .tableau td:first-child {
-	/* alignement à gauche dans la première colonne */
+	/* alignement ï¿½ gauche dans la premiï¿½re colonne */
 	text-align: left;
 	padding-left: 10px;
 }
 
-/* styles de la première et de la dernière ligne */
+/* styles de la premiï¿½re et de la derniï¿½re ligne */
 .tableau th, .tableau tr:last-child {
 	font-weight: bold; 
 	font-size: 1em;
 
-	/* fond avec un dégradé de couleur (blanc en haut, gris en bas) */
+	/* fond avec un dï¿½gradï¿½ de couleur (blanc en haut, gris en bas) */
 	background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(210, 210, 210));
 	background: -webkit-gradient(linear, left top, left bottom, from(rgb(255, 255, 255)), to(rgb(210, 210, 210)));
 	background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(210, 210, 210));
 }
 
-/* styles de la première cellule de la première ligne */
+/* styles de la premiï¿½re cellule de la premiï¿½re ligne */
 .tableau th:first-child {
-	/* coin arrondi en haut et à gauche */
+	/* coin arrondi en haut et ï¿½ gauche */
 	-moz-border-radius: 10px 0 0 0;
 	-webkit-border-radius: 10px 0 0 0;
 	border-radius: 10px 0 0 0;
 }
 
-/* styles de la dernière cellule de la première ligne */
+/* styles de la derniï¿½re cellule de la premiï¿½re ligne */
 .tableau th:last-child {
-	/* coin arrondi en haut et à droite */
+	/* coin arrondi en haut et ï¿½ droite */
 	-moz-border-radius: 0 10px 0 0;
 	-webkit-border-radius: 0 10px 0 0;
 	border-radius: 0 10px 0 0;
 }
 
-/* styles de la première cellule de la dernière ligne */
+/* styles de la premiï¿½re cellule de la derniï¿½re ligne */
 .tableau tr:last-child td:first-child {
-	/* coin arrondi en bas et à gauche */
+	/* coin arrondi en bas et ï¿½ gauche */
 	-moz-border-radius: 0 0 0 10px;
 	-webkit-border-radius: 0 0 0 10px;
 	border-radius: 0 0 0 10px;
 }
 
-/* styles de la dernière cellule de la dernière ligne */
+/* styles de la derniï¿½re cellule de la derniï¿½re ligne */
 .tableau tr:last-child td:last-child {
-	/* coin arrondi en bas et à droite */
+	/* coin arrondi en bas et ï¿½ droite */
 	-moz-border-radius: 0 0 10px 0;
 	-webkit-border-radius: 0 0 10px 0;
 	border-radius: 0 0 10px 0;
@@ -600,7 +600,7 @@ input[type=submit] {
 	-khtml-border-radius: 7px;
 	border-radius: 7px;
 	
-	/* fond avec un dégradé de couleur (blanc en haut, gris léger en bas) */
+	/* fond avec un dï¿½gradï¿½ de couleur (blanc en haut, gris lï¿½ger en bas) */
 	background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(210, 210, 210));
 	background: -webkit-gradient(linear, right top, right bottom, from(rgb(255, 255, 255)), to(rgb(210, 210, 210)));
 	background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(210, 210, 210));
@@ -622,13 +622,13 @@ input[type=submit2] {
 	-khtml-border-radius: 7px;
 	border-radius: 7px;
 	
-	/* fond avec un dégradé de couleur (blanc en haut, gris léger en bas) */
+	/* fond avec un dï¿½gradï¿½ de couleur (blanc en haut, gris lï¿½ger en bas) */
 	background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(210, 210, 210));
 	background: -webkit-gradient(linear, right top, right bottom, from(rgb(255, 255, 255)), to(rgb(210, 210, 210)));
 	background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(210, 210, 210));
 }
 
-/* gestion de la validité des données saisies avec une icone rouge ou verte à droite de la zone */
+/* gestion de la validitï¿½ des donnï¿½es saisies avec une icone rouge ou verte ï¿½ droite de la zone */
 input[type=text]:invalid , input[type=email]:invalid, input[type=password]:invalid, textarea:invalid {
 	background: #fff url(../images/rond-rouge.png) no-repeat 99% center;
 }
@@ -637,7 +637,7 @@ input[type=text]:valid , input[type=email]:valid, input[type=password]:valid, te
 	display: inline-block;
 }
 
-/* ------------------------ styles liés au système d'affichage de messages ---------------------------- */
+/* ------------------------ styles liï¿½s au systï¿½me d'affichage de messages ---------------------------- */
 
 /* mise en forme de la boite d'affichage du message */
 .classe_message > div {
@@ -656,13 +656,13 @@ input[type=text]:valid , input[type=email]:valid, input[type=password]:valid, te
 	-khtml-border-radius: 7px;
 	border-radius: 7px;
 	
-	/* ombre portée */
+	/* ombre portï¿½e */
 	-webkit-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9);
 	-moz-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9);
 	-o-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9);
 	box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9);
 
-	/* fond avec un dégradé de couleur (blanc en haut, gris en bas) */	
+	/* fond avec un dï¿½gradï¿½ de couleur (blanc en haut, gris en bas) */	
 	background: -moz-linear-gradient(top, rgb(255, 255, 255), rgb(210, 210, 210));
 	background: -webkit-gradient(linear, right top, right bottom, from(rgb(255, 255, 255)), to(rgb(210, 210, 210)));
 	background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(210, 210, 210));
@@ -673,7 +673,7 @@ input[type=text]:valid , input[type=email]:valid, input[type=password]:valid, te
 	padding-left: 50px;
 	line-height: 32px;
 	background: url(../images/avertissement.png) no-repeat left bottom;
-	color: #0b4c8e;
+	color: #247023;
 }
 
 /* style du titre du message d'information et son icone */
@@ -681,7 +681,7 @@ input[type=text]:valid , input[type=email]:valid, input[type=password]:valid, te
 	padding-left: 50px;
 	line-height: 32px;
 	background: url(../images/information.png) no-repeat left bottom;
-	color: #0b4c8e;
+	color: #247023;
 }
 
 /* style du message */
@@ -708,10 +708,10 @@ input[type=text]:valid , input[type=email]:valid, input[type=password]:valid, te
 	bottom: 0;
 	/* un fond noir avec une transparence de 30% */
 	background: rgba(0, 0, 0, 0.3);
-	/* le conteneur est placé sur la page */
+	/* le conteneur est placï¿½ sur la page */
 	z-index: 10000;
 	
-	/* utilisation de la transformation de transparence à l'ouverture */
+	/* utilisation de la transformation de transparence ï¿½ l'ouverture */
 	-webkit-transition: opacity 500ms ease-in;
 	-moz-transition: opacity 500ms ease-in;
 	-o-transition: opacity 500ms ease-in;
@@ -719,18 +719,18 @@ input[type=text]:valid , input[type=email]:valid, input[type=password]:valid, te
 	
 	/* au chargement de la page, le conteneur est transparent */
 	opacity: 0;
-	/* et on ne peut pas cliquer sur ses éléments */
+	/* et on ne peut pas cliquer sur ses ï¿½lï¿½ments */
 	pointer-events: none;
 }
 
-/* quand le conteneur est ciblé, il devient opaque */
+/* quand le conteneur est ciblï¿½, il devient opaque */
 .classe_message:target {
 	opacity: 1;
-	/* et on peut maintenant cliquer sur ses éléments */
+	/* et on peut maintenant cliquer sur ses ï¿½lï¿½ments */
 	pointer-events: auto;
 }
 
-/* animation à l'ouverture de la boîte de message */
+/* animation ï¿½ l'ouverture de la boï¿½te de message */
 @-webkit-keyframes animation_ouverture {
 	0% { -webkit-transform: scale3d(0.1, 0.1, 1); -webkit-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.9); }
 	55% { -webkit-transform: scale3d(1.08, 1.08, 1); -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0); }
@@ -764,7 +764,7 @@ input[type=text]:valid , input[type=email]:valid, input[type=password]:valid, te
 	animation: animation_ouverture 1000ms linear;
 }
 
-/* animation à la fermeture de la boîte de message */
+/* animation ï¿½ la fermeture de la boï¿½te de message */
 @-webkit-keyframes animation_fermeture {
 	0% { -webkit-transform: scale3d(1, 1, 1); }
 	100% { -webkit-transform: scale3d(0.1, 0.1, 1); }
@@ -782,7 +782,7 @@ input[type=text]:valid , input[type=email]:valid, input[type=password]:valid, te
 	100% { transform: scale3d(0.1, 0.1, 1); }
 }
 
-/* déclenchement de l'animation de fermeture */
+/* dï¿½clenchement de l'animation de fermeture */
 .classe_message > div {
 	-webkit-animation: animation_fermeture 500ms linear;
 	-moz-animation: animation_fermeture 500ms linear;
@@ -790,7 +790,7 @@ input[type=text]:valid , input[type=email]:valid, input[type=password]:valid, te
 	animation: animation_fermeture 500ms linear;
 }
 
-/* ---------------- effet d'accordéon ------------------- */
+/* ---------------- effet d'accordï¿½on ------------------- */
 
 .accordion {
   width: 380px;

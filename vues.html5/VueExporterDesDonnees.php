@@ -63,6 +63,8 @@
 					<input type="submit" name="btnPDF" id="btnPDF" value="Télécharger la liste d'inscription">
 					<br></br>
 					<input type="submit" name="btnCSV" id="btnCSV" value="Exporter les élèves">
+					<br></br>
+					<input type="submit" name="btnMail" id="btnMail" value="Exporter les mails">
 			</form>				
 		</div>
 		

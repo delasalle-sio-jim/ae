@@ -457,7 +457,72 @@ class DAO
 		// fourniture de la collection
 		return $lesEleves;
 	}
+    
+	// fournit un excel contenant tous les élèves de la bdd (nom, prenom, promo, mail)
+	// crée par Baptiste de Bailliencourt le 16/06/2021
+	function ExporterLesEleves(){
+	    $txt_req = "SELECT nom, prenom, anneeDebutBTS, adrMail FROM ae_eleves ORDER BY nom";
+	    $req = $this->cnx->prepare($txt_req);
+	    // extraction des données
+	    $req->execute();
+	    $uneLigne = $req->fetch(PDO::FETCH_OBJ);
+        // entête
+	    $unExcel =  "Nom;Prénom;Année de début de BTS;Mail;\n";
+	    while ($uneLigne)
+	    {
+	        // Récupération des données
+	        $nom = utf8_encode($uneLigne->nom);
+	        $prenom = utf8_encode($uneLigne->prenom);
+	        $anneeDebutBTS = utf8_encode($uneLigne->anneeDebutBTS);
+	        $adrMail = utf8_encode($uneLigne->adrMail);
+	        
+	        // ajout de l'élève au tableau
+	        $unExcel .= $nom.";".$prenom.";".$anneeDebutBTS.";".$adrMail."; \n";
+	        // extrait la ligne suivante
+	        $uneLigne = $req->fetch(PDO::FETCH_OBJ);
+	    }
+	    header('Content-Encoding: UTF-8');
+	    header("Content-type: application/vnd.ms-excel; charset=UTF-8");
+	    header("Content-disposition: attachment; filename=ListeDesEleves.csv");
+        
+	    echo pack('H*','EFBBBF');
 
+	    print $unExcel;
+	    exit;
+	    
+	}
+	
+	function ExporterLesMails(){
+	    $txt_req = "SELECT nom, adrMail FROM ae_eleves ORDER BY nom";
+	    $req = $this->cnx->prepare($txt_req);
+	    // extraction des données
+	    $req->execute();
+	    $uneLigne = $req->fetch(PDO::FETCH_OBJ);
+	    // entête
+	    $unExcel =  "Mail;\n";
+	    while ($uneLigne)
+	    {
+	        // Récupération des données
+	        
+	        $adrMail = utf8_encode($uneLigne->adrMail);
+	        
+	        // ajout de l'élève au tableau
+	        $unExcel .= $adrMail."; \n";
+	        // extrait la ligne suivante
+	        $uneLigne = $req->fetch(PDO::FETCH_OBJ);
+	    }
+	    header('Content-Encoding: UTF-8');
+	    header("Content-type: application/vnd.ms-excel; charset=UTF-8");
+	    header("Content-disposition: attachment; filename=ListeDesMails.csv");
+	    
+	    echo pack('H*','EFBBBF');
+	    
+	    print $unExcel;
+	    exit;
+	    
+	}
+	
+	
 	// fournit la liste de toutes les adresses mails des eleves
 	// le résultat est fourni sous forme d'une collection d'adresses mails
 	// créé par Nicolas Esteve le XX/01/2016
@@ -604,7 +669,7 @@ class DAO
 		// ATTENTION : le mot de passe est hashé en sha1 avant l'enregistrement dans la bdd
 		$req->bindValue("mdp", utf8_decode(sha1($unAdministrateur->getMotDePasse())), PDO::PARAM_STR);
 		$req->bindValue("prenom", stripslashes(utf8_decode($unAdministrateur->getPrenom())), PDO::PARAM_STR);
-		$req->bindValue("nom", stripslashes(utf8_decode(strtoupper($unAdministrateur->getNom()))), PDO::PARAM_STR);
+		$req->bindValue("nom", stripslashes(utf8_decode(mb_strtoupper($unAdministrateur->getNom()))), PDO::PARAM_STR);
 		//execution de la requete
 		$ok = $req->execute();
 		return $ok;
@@ -998,7 +1063,7 @@ class DAO
 	{
 	    if(!empty ($lesInscriptionsPayees))
 	    {
-	        $txt_req ="UPDATE ae_inscriptions JOIN ae_soirees SET montantRegle = tarif ";
+	        $txt_req ="UPDATE ae_inscriptions JOIN ae_soirees SET montantRegle = tarif * nbrePersonnes ";
     	    $txt_req .="WHERE ae_inscriptions.id IN (";
     	    
     	    foreach($lesInscriptionsPayees AS $uneInscriptionPayee) 
@@ -1033,7 +1098,7 @@ class DAO
 	        
 	    if(!empty($lesInscriptionsRemboursees))
 	    {
-    	    $txt_req .=" UPDATE ae_inscriptions JOIN ae_soirees SET montantRembourse = tarif ";
+    	    $txt_req .=" UPDATE ae_inscriptions JOIN ae_soirees SET montantRembourse = tarif * nbrePersonnes ";
     	    $txt_req .="WHERE ae_inscriptions.id IN (";
     	    foreach($lesInscriptionsRemboursees AS $uneInscriptionRemboursee)
     	    {
@@ -1278,7 +1343,7 @@ class DAO
 	{
 		// mise en forme des variables
 		$telephone = Outils::corrigerTelephone($telephone);
-		$nom = strtoupper($nom);
+		$nom = mb_strtoupper($nom);
 		$prenom = Outils::corrigerPrenom($prenom);
 		$ville = Outils::corrigerVille($ville);
 	
@@ -1644,7 +1709,7 @@ class DAO
 	// retourne false sinon
 	// créé par Killian BOUTIN le 17/06/2016
 	public function redimensionnerImage($uneImage, $uneSource, $uneDestination, $uneTailleMax){		
-		$toUpperImage = strtoupper($uneImage);
+		$toUpperImage = mb_strtoupper($uneImage);
 		
 		if ((strrchr($toUpperImage, '.') == '.JPG') OR (strrchr($toUpperImage, '.') == '.JPEG')){
 			

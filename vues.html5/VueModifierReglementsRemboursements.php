@@ -78,9 +78,9 @@
 								<th>Mt réglé</th>
 								<th>Mt remboursé</th>
 								<th>Reste dû</th>
-								<th>Payé ?</th>
-								<th>Annulé ?</th>
-								<th>Remboursé ?</th>
+								<th>Payé </th>
+								<th>Remboursé </th>
+								<th>Annulé </th>
 							</tr>
 						</thead>
 						
@@ -98,7 +98,9 @@
 						$montantTotalRembourse += $montantRembourse;
 						
 						/* obtention du coût total à payer puis du montant final */
-						$coutTotal = $uneInscription->getTarif() * $uneInscription->getNbrePersonnes() - ($montantRegle + $montantRembourse);
+						$coutTotal = $uneInscription->getTarif() * $uneInscription->getNbrePersonnes();
+						if ($uneInscription->getInscriptionAnnulee() == 1 && $uneInscription->getMontantRegle() == 0 && $uneInscription->getMontantRembourse()==0 OR  $coutTotal<0 OR $uneInscription->getMontantRegle() == $coutTotal)
+						    $coutTotal =0;
 						if ($coutTotal <=0)
 						    $coutTotal =0;
 						$montantTotalFinal += $coutTotal;
@@ -141,8 +143,9 @@
                                         $inscriptionRemboursee = 'off';
                                     ?>
 							<td><input type="checkbox" name="Paye[]" value=<?php echo $uneInscription->getId()?> <?php if ($inscriptionPayee == 'on') echo 'checked'; ?>></td>
-							<td><input type="checkbox" name="Annule[]" value=<?php echo $uneInscription->getId()?> <?php if ($inscriptionAnnulee == 'on') echo 'checked'; ?>></td>
 							<td><input type="checkbox" name="Rembourse[]" value=<?php echo $uneInscription->getId()?> <?php if ($inscriptionRemboursee == 'on') echo 'checked'; ?>></td>
+							<td><input type="checkbox" name="Annule[]" value=<?php echo $uneInscription->getId()?> <?php if ($inscriptionAnnulee == 'on') echo 'checked'; ?>></td>
+							
 						</tr>
 						
 						<?php

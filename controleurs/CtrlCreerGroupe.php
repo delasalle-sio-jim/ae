@@ -12,7 +12,7 @@ if ( $_SESSION['typeUtilisateur'] != 'administrateur') {
 // connexion du serveur web à la base MySQL
 include_once ('modele/DAO.class.portail.php');
 $dao = new DAO();
-
+$lesGroupes = $dao->getLesGroupesSansDocuments();
 if ( ! isset ($_POST ["btnEnvoyer"]) ) {
     // si les données n'ont pas été postées, c'est le premier appel du formulaire : affichage de la vue sans message d'erreur
     $unNomDeGroupe = '';
@@ -28,8 +28,7 @@ else {
      include_once ('modele/Groupe.class.php');
      // création d'un objet Groupe
      $id = 0; 	// le numéro sera affecté automatiquement par le SGBD
-     $unNomDeGroupe = $_POST ["txtNom"];
-     $lesGroupes = $dao->getLesGroupesSansDocuments();
+     $unNomDeGroupe = $_POST["txtNom"];
      $ok = true;
      foreach($lesGroupes as $unGroupe)
      {
@@ -46,9 +45,9 @@ else {
      }
      if($ok)
      {
-         $unGroupe = new Groupe($id, $unNomDeGroupe);
+         $unNouveauGroupe = new Groupe($id, $unNomDeGroupe);
          // enregistrement de l'élève dans la BDD
-         $ok = $dao->ajouterGroupe($unGroupe);
+         $ok = $dao->ajouterGroupe($unNouveauGroupe);
          if ( ! $ok ) 
          {
              // si l'enregistrement a échoué, réaffichage de la vue avec un message explicatif

@@ -138,7 +138,7 @@
 						</tr>
 					</table>
 					<p>
-			<input type="submit" name="btnMaj" id="btnMaj" value="Supprimer les anciennes inscriptions">
+			<input type="submit" name="btnMaj" id="btnMaj" value="Supprimer les vieilles inscriptions">
 			</p>
 				<?php 
 				}

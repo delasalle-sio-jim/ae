@@ -103,9 +103,9 @@
 								<th>Mt réglé</th>
 								<th>Mt remboursé</th>
 								<th>Reste dû</th>
-								<th>Payé ?</th>
-								<th>Annulé ?</th>
-								<th>Remboursé ?</th>
+								<th>Payé </th>
+								<th>Annulé </th>
+								<th>Remboursé </th>
 							</tr>
 						</thead>
 						

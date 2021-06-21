@@ -40,7 +40,7 @@ class Eleve
 	public function Eleve($unId, $unNom, $unPrenom, $unSexe, $uneAnneeDebutBTS, $unTel, $uneAdrMail, $uneRue, $unCodePostal,
 			$uneVille, $uneEntreprise, $unCompteAccepte, $unMotDePasse, $desEtudesPostBTS, $uneDateDerniereMAJ, $unIdFonction) {
 		$this->id = $unId;
-		$this->nom = strtoupper($unNom);
+		$this->nom = mb_strtoupper($unNom);
 		$this->prenom = Outils::corrigerPrenom($unPrenom);
 		$this->sexe = $unSexe;
 		$this->anneeDebutBTS = $uneAnneeDebutBTS;
@@ -68,7 +68,7 @@ class Eleve
 	public function setId($unId) {$this->id = $unId;}
 
 	public function getNom() {return $this->nom;}
-	public function setNom($unNom) {$this->nom = strtoupper($unNom);}
+	public function setNom($unNom) {$this->nom = mb_strtoupper($unNom);}
 
 	public function getPrenom() {return $this->prenom;}
 	public function setPrenom($unPrenom) {$this->prenom = Outils::corrigerPrenom($unPrenom);}	
