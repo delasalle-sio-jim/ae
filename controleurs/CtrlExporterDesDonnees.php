@@ -16,7 +16,7 @@ $inscription = new Inscription("","","","","","","","","","","","");
 $dao = new DAO();
 $relire = true;
 $soiree = $dao->getSoiree($relire);
-$lesInscriptions = $dao->getLaListeInscriptions();
+$lesInscriptions = $dao->getLesInscriptionsSansAnnulations();
 $x = 173;
 $y = 61;
 if(!isset ($_POST ["btnPDF"]) && !isset($_POST ["btnCSV"]) && !isset($_POST ["btnMail"]))
@@ -25,18 +25,20 @@ if(!isset ($_POST ["btnPDF"]) && !isset($_POST ["btnCSV"]) && !isset($_POST ["bt
 }
 if ( isset ($_POST["btnCSV"]))
 {
-     
+    // on appel la fonction qui permet la création du pdf
     $dao->ExporterLesEleves();
     include_once ($cheminDesVues . 'VueExporterDesDonnees.php');
 }
 
 if ( isset ($_POST["btnMail"]))
 {
+    // on appel la fonction qui permet la création du pdf
     $dao->ExporterLesMails();
     include_once ($cheminDesVues . 'VueExporterDesDonnees.php');
 }
 if ( isset ($_POST ["btnPDF"]) ) {
     require('modele/fpdf/fpdf.php');
+    // la documentation concernant FPDF est disponible ici : http://www.fpdf.org
     class PDF extends FPDF
     {
         // En-tête
@@ -53,7 +55,7 @@ if ( isset ($_POST ["btnPDF"]) ) {
 
             // Saut de ligne
             $this->Ln(30);
-            $this->Cell(55,10,iconv("UTF-8", "CP1252", "Liste du ".date("d/m/Y",$t)." à ".date("H:i",$t)),0,1);
+            $this->Cell(55,10,iconv("UTF-8", "CP1252", "Liste du ".date("d/m/Y")." à ".date("H:i")),0,1);
         }
         
         // Pied de page
@@ -67,7 +69,6 @@ if ( isset ($_POST ["btnPDF"]) ) {
             $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
         }
     }
-    $t=time(); 
     $pdf=new PDF();
     $pdf->AddPage();
     $pdf->AliasNbPages();
@@ -80,10 +81,11 @@ if ( isset ($_POST ["btnPDF"]) ) {
     $pdf->Cell(30,10,iconv("UTF-8", "CP1252", "  Montant"),1,0);
     $pdf->Cell(35,10,iconv("UTF-8", "CP1252", "     Payé ?"),1,1);
     foreach($lesInscriptions AS $uneInscription)
-    {   $unNom = $uneInscription->nom;
-        $unPrenom = $uneInscription->prenom;
-        $unNbrePersonnes = $uneInscription->nbrePersonnes;
-        $unMontant = $uneInscription->montant;
+    {   
+        $unNom = $uneInscription->getNom();
+        $unPrenom = $uneInscription->getPrenom();
+        $unNbrePersonnes = $uneInscription->getNbrePersonnes();
+        $unMontant = $uneInscription->getTarif();
         if (strlen($unNom)<=15)
         {
             $pdf->SetFont('Arial','',16);

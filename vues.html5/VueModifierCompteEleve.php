@@ -113,7 +113,7 @@
 				
 				<div class="ui-widget">
 				<p>
-					 <label for="listeEleves">Eleves: </label>
+					 <label for="listeEleves">Etudiant: </label>
  					 <input type="email" id="listeEleves"  value="<?php if($etape == 1 ) echo $uneAdrMail; else echo ''; ?>" name="listeEleves" required pattern="^.+@.+\..+$" placeholder="Recherchez à l'aide de l'email de l'utilisateur">
 				</p>
 					
@@ -186,7 +186,7 @@
 		</div>
 			
 		<div id="footer">
-			<p>Annuaire des anciens élèves du BTS Informatique - Lycée De La Salle (Rennes)</p>
+			<p>Annuaire des anciens étudiants du BTS Informatique - Pôle Sup De La Salle (Rennes)</p>
 		</div>	
 			
 	</div>

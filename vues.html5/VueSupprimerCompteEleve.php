@@ -97,7 +97,7 @@
 				{?>
 					<div class="ui-widget">
 					<p>
-						 <label for="listeEleves">Eleves: </label>
+						 <label for="listeEleves">Etudiant: </label>
 	 					 <input id="listeEleves"  value="<?php if($etape == 1 ) echo $mail ; else echo ''; ?>" name="listeEleves" placeholder="recherchez à l'aide de l'email de l'utilisateur">
 					</p>
 					
@@ -122,7 +122,7 @@
 			</form>
 		</div>
 		<div id="footer">
-			<p>Annuaire des anciens élèves du BTS Informatique - Lycée De La Salle (Rennes)</p>
+			<p>Annuaire des anciens étudiants du BTS Informatique - Pôle Sup De La Salle (Rennes)</p>
 		</div>		
 	</div>
 	

@@ -27,7 +27,7 @@
 		</div>
 			
 		<div id="content">
-			<h2>Liste des inscrits à la prochaine soirée des anciens</h2>
+			<h2>Liste des inscriptions à la prochaine soirée des anciens</h2>
 			<h3 class="titre_inscription"><?php echo $titre ?></h3>
 				<?php
 				/* si le nombre d'inscrit n'est pas égal à 0 */
@@ -78,7 +78,7 @@
 		</div>
 		
 		<div id="footer">
-			<p>Annuaire des anciens élèves du BTS Informatique - Lycée De La Salle (Rennes)</p>
+			<p>Annuaire des anciens étudiants du BTS Informatique - Pôle Sup De La Salle (Rennes)</p>
 		</div>		
 	</div>
 	

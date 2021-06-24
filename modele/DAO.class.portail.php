@@ -1,4 +1,46 @@
 <?php
+// -------------------------------------------------------------------------------------------------------------------------
+//                                          Projet DLS - BTS Info - Anciens élèves
+//                                                 DAO : Data Access Object
+//                             Cette classe fournit des méthodes d'accès à la bdd portail
+//                                                 Elle utilise l'objet PDO
+//                       Auteur : JM Cartron                       Dernière modification : 25/06/2021
+//						 Participation de : Baptiste de Bailliencourt
+// -------------------------------------------------------------------------------------------------------------------------
+
+// ajouterGroupe() : booléen
+//   permet de rajouter un objet groupe à la bdd portail
+
+// modifierGroupe() : booléen
+//   modifier un objet groupe dans la bdd portail
+
+// supprimerUnGroupe() : booléen
+//   supprimer un objet groupe de la bdd portail
+
+// ajouterDocument() : booléen
+//   ajoute un objet document à la bdd portail
+
+// modifierDocument() : booléen
+//   modifier un objet document dans la bdd portail
+
+// supprimerUnDocument() : booléen
+//   supprimer un objet document de la bdd portail
+
+// getLeDocument() : <document>
+//   renvois les données d'un document de la bdd
+
+// getLesDocumentsDuGroupe() : array<document>
+//  renvois une collection d'objets documents qui correspondent à un groupe selectionné
+
+// getTousLesDocuments() : array<document>
+//   renvois tous les documents de la bdd
+
+// getLesGroupesSansDocuments() : array<groupe>
+//   renvois une collection d'objets groupe qui ne possèdent aucun documents
+
+// getLesGroupesAvecDocuments() : array<groupe>
+//   renvois tous les groupes
+
 // certaines méthodes nécessitent les fichiers suivants :
 include_once ('Groupe.class.php');
 include_once ('Document.class.php');
@@ -171,7 +213,7 @@ class DAO
 	    $uneLigne = $req->fetch(PDO::FETCH_OBJ);
 	    $id = utf8_decode($uneLigne->id);
 	    $nomSurBouton = utf8_encode($uneLigne->nomSurBouton);
-	    $nomDuFichier = utf8_decode($uneLigne->nomDuFichier);
+	    $nomDuFichier = utf8_encode($uneLigne->nomDuFichier);
 	    $idGroupe = utf8_decode($uneLigne->idGroupe);
 	    
 	    $unDocument = new Document($id, $nomSurBouton, $nomDuFichier, $idGroupe);	    
@@ -198,7 +240,7 @@ class DAO
 	    {
 	        // création d'un objet Groupe
 	        $id =$uneLigne->id;
-	        $nomSurBouton = $uneLigne->nomSurBouton;
+	        $nomSurBouton = utf8_encode($uneLigne->nomSurBouton);
 	        $nomDuFichier = $uneLigne->nomDuFichier;
 	        $idGroupe =$uneLigne->idGroupe;
 	        

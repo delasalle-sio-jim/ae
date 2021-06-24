@@ -64,7 +64,7 @@
 					</div>
 					
 					<div id="menu3" class="menu">
-						<h3><a href="#menu3">Le réseau des anciens élèves...</a></h3>
+						<h3><a href="#menu3">Le réseau des anciens étudiants...</a></h3>
 						<div>
 							<!-- <p><a href="index.php?action=RechercherAnciens" class="bouton-menu">Rechercher d'autres anciens élèves</a></p> -->
 							<p><a href="index.php?action=ProposerStage" class="bouton-menu">Proposer un stage à un étudiant</a></p>
@@ -95,7 +95,7 @@
 					</div>
 					
 					<div id="menu3" class="menu">
-						<h3><a href="#menu3">Le réseau des anciens élèves...</a></h3>
+						<h3><a href="#menu3">Le réseau des anciens étudiants...</a></h3>
 						<div>
 							<!-- <p><a href="index.php?action=RechercherAnciens" class="bouton-menu">Rechercher d'autres anciens élèves</a></p> -->
 							<p><a href="index.php?action=GererPhotos" class="bouton-menu">Gérer la galerie de photos</a></p>
@@ -103,11 +103,11 @@
 					</div>
 					
 					<div id="menu4" class="menu">
-						<h3><a href="#menu4">Gérer les comptes élèves...</a></h3>
+						<h3><a href="#menu4">Gérer les comptes étudiants...</a></h3>
 						<div>
-							<p><a href="index.php?action=CreerCompteEleve" class="bouton-menu">Créer un compte élève</a></p>
-							<p><a href="index.php?action=ModifierCompteEleve" class="bouton-menu">Modifier un compte élève</a></p>
-							<p><a href="index.php?action=SupprimerCompteEleve" class="bouton-menu">Supprimer un compte élève</a></p>
+							<p><a href="index.php?action=CreerCompteEleve" class="bouton-menu">Créer un compte étudiant</a></p>
+							<p><a href="index.php?action=ModifierCompteEleve" class="bouton-menu">Modifier un compte étudiant</a></p>
+							<p><a href="index.php?action=SupprimerCompteEleve" class="bouton-menu">Supprimer un compte étudiant</a></p>
 						</div>
 					</div>
 					
@@ -136,7 +136,7 @@
 		</div>
 			
 		<div id="footer">
-			<p>Annuaire des anciens élèves du BTS Informatique - Lycée De La Salle (Rennes)</p>
+			<p>Annuaire des anciens étudiants du BTS Informatique - Pôle Sup De La Salle (Rennes)</p>
 		</div>
 	</div>
 </body>

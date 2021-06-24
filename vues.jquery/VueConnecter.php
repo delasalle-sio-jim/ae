@@ -48,8 +48,8 @@
 			<div data-role="content">
 				<div data-role="collapsible-set">
 					<div data-role="collapsible">
-						<h3>Bienvenue sur l'annuaire des anciens élèves...</h3>
-						<p>L'annuaire des anciens élèves du <b>BTS Informatique</b> du <b>Lycée De La Salles</b> (Rennes) vous propose les services suivants :</p>
+						<h3>Bienvenue sur l'Annuaire des anciens étudiants...</h3>
+						<p>L'Annuaire des anciens étudiants du <b>BTS Informatique</b> du <b>Lycée De La Salles</b> (Rennes) vous propose les services suivants :</p>
 						<ul>
 							<li>Formulaire d'inscription à la soirée des anciens</li>
 							<li>Consultation de la liste des anciens déjà inscrits à la soirée des anciens</li>

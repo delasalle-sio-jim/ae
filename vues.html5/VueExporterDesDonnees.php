@@ -60,16 +60,16 @@
 			
 			<form name="form1" id="form1" action="index.php?action=ExporterDesDonnees" method="post">			
 								
-					<input type="submit" name="btnPDF" id="btnPDF" value="Télécharger la liste d'inscription">
+					<input type="submit" name="btnPDF" id="btnPDF" value="La liste des inscriptions (pdf)">
 					<br></br>
-					<input type="submit" name="btnCSV" id="btnCSV" value="Exporter les élèves">
+					<input type="submit" name="btnCSV" id="btnCSV" value="La liste des élèves">
 					<br></br>
-					<input type="submit" name="btnMail" id="btnMail" value="Exporter les mails">
+					<input type="submit" name="btnMail" id="btnMail" value="La liste des mails">
 			</form>				
 		</div>
 		
 		<div id="footer">
-			<p>Annuaire des anciens élèves du BTS Informatique - Lycée De La Salle (Rennes)</p>
+			<p>Annuaire des anciens étudiants du BTS Informatique - Pôle Sup De La Salle (Rennes)</p>
 		</div>		
 	</div>
 	

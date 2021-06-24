@@ -72,13 +72,23 @@ elseif (isset($_POST['btnEnvoyer']) == true )
         $unId = $unDocumentInitial->getId();
         if ( empty ($_POST ["txtBouton"]) == true)  $unNomSurBouton = $unDocumentInitial->getNomSurBouton();  else   $unNomSurBouton = $_POST ["txtBouton"];
         
-        if ( $_POST ["listeGroupes"] == 0)  $idGroupe = $unDocumentInitial->getIdGroupe(); else   $idGroupe = $_POST ["listeGroupes"];        
-        $unNomFichierInitial = iconv("UTF-8", "CP1252", $unDocumentInitial->getNomDuFichier());
-        if (($_FILES['fileDocument']["name"]) == "") $unNomFichier = $unNomFichierInitial; else $unNomFichier = $_FILES['fileDocument']['name'];
-        $leDossierInitial = '../portail/documents/';
-                        
-        unlink($leDossierInitial . $unNomFichierInitial);
-        move_uploaded_file($_FILES['fileDocument']['tmp_name'], $leDossierInitial . $unNomFichier);    
+        if ( $_POST ["listeGroupes"] == 0)  $idGroupe = $unDocumentInitial->getIdGroupe(); else   $idGroupe = $_POST ["listeGroupes"];   
+        
+        $unNomFichierInitial = $unDocumentInitial->getNomDuFichier();
+        
+        if (($_FILES['fileDocument']["name"]) == ""){ $unNomFichier = $unNomFichierInitial; 
+        }
+        else 
+        {
+            $unNomFichier = $_FILES['fileDocument']['name'];
+            $leDossierInitial = '../portail/documents/';
+            unlink($leDossierInitial . $unNomFichierInitial);
+            move_uploaded_file($_FILES['fileDocument']['tmp_name'], $leDossierInitial . $unNomFichier);
+        }
+        
+        
+        
+ 
         $unDocument = new Document($unId, $unNomSurBouton, $unNomFichier, $idGroupe);
         
         $ok = $dao->modifierUnDocument($unDocument);

@@ -142,7 +142,23 @@
 // supprimerImage($idImage) : booléen
 //   supprime la photo passée en paramètre dans la BDD et retourne true si la suppression s'est effectuée correctement, retourne false sinon
 
- 
+// exporterLesMails() : excel
+//   Permet d'obtenir la liste des mails de tous les élèves dans un excel
+
+// getLesInscriptionsSansAnnulations() : array<inscription>
+//   renvois une collection d'objet inscriptions qui n'ont pas été annulée
+
+// getLesInscriptionsAvecAnnulations() : array<inscription>
+//   renvois une collection contenant toutes les inscriptions contenant beaucoup de valeurs différentes
+
+// purgerLesInscriptions() : booléen
+//   supprime les inscriptions datant de plus de 6 mois de la liste des inscriptions
+
+// actualiserLesInscriptions() : booléen
+//   actualise différentes données des inscriptions, le payement, le remboursement, l'annulation.
+
+// getLaListeInscriptions() : array<inscription>
+//    permet d'obtenir toutes les inscrptions avec peu de valeurs différentes
 
 // certaines méthodes nécessitent les fichiers suivants :
 include_once ('Fonction.class.php');
@@ -650,8 +666,8 @@ class DAO
 		if ( ! $this->existeAdrMail($adrMail) ) return false;
 		
 		// envoie un mail à l'utilisateur avec son nouveau mot de passe
-		$sujet = "Modification de votre mot de passe d'accès à l'annuaire des anciens élèves du Lycée De La Salle";
-		$message = "Votre mot de passe d'accès à l'annuaire des anciens élèves du Lycée De La Salle a été modifié.\n\n";
+		$sujet = "Modification de votre mot de passe d'accès à l'Annuaire des anciens étudiants du Lycée De La Salle";
+		$message = "Votre mot de passe d'accès à l'Annuaire des anciens étudiants du Lycée De La Salle a été modifié.\n\n";
 		$message .= "Votre nouveau mot de passe est : " . $nouveauMdp;
 		$ok = Outils::envoyerMail ($adrMail, $sujet, $message, $ADR_MAIL_EMETTEUR);
 		return $ok;

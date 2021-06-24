@@ -76,7 +76,7 @@
 <body>
 	<div id="page">
 		<div id="content">
-			<h3 style= "margin-left:12px;" id="top"><i>Galerie photo des anciens élèves :</i></h3>
+			<h3 style= "margin-left:12px;" id="top"><i>Galerie photo des anciens étudiants :</i></h3>
 			
 			<h5 style= "margin: -12px 0px 2px 12px; ">Indiquez votre année d'arrivée :</h4>
 			<!-- Quand on valide le formulaire avec le bouton ou si on clique sur "entrée" -->

@@ -61,8 +61,8 @@
 			
 		<div id="content">
 
-			<h2>Bienvenue sur l'annuaire des anciens élèves du lycée De La Salle</h2>
-			<p>L'annuaire des anciens élèves du <b>BTS Informatique</b> du <b>Lycée De La Salles</b> (Rennes) vous propose :</p>
+			<h2>Bienvenue sur l'Annuaire des anciens étudiants du lycée De La Salle</h2>
+			<p>L'Annuaire des anciens étudiants du <b>BTS Informatique</b> du <b>Lycée De La Salles</b> (Rennes) vous propose :</p>
 			<ul>
 				<li>Formulaire d'inscription à la soirée des anciens</li>
 				<li>Consultation de la liste des anciens déjà inscrits à la soirée des anciens</li>
@@ -109,7 +109,7 @@
 		</div>
 				
 		<div id="footer">
-			<p>Annuaire des anciens élèves du BTS Informatique - Lycée De La Salle (Rennes)</p>
+			<p>Annuaire des anciens étudiants du BTS Informatique - Pôle Sup De La Salle (Rennes)</p>
 		</div>	
 	</div>
 	

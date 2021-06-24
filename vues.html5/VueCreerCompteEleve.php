@@ -52,7 +52,7 @@
 			
 		<div id="content">
 			 		
-			<h2>Création d'un compte élève (actuel ou ancien)</h2>
+			<h2>Création d'un compte étudiant (actuel ou ancien)</h2>
 			
 			<h3>Entrez les données demandées (* indique un champ obligatoire) :</h3>
 			
@@ -122,7 +122,7 @@
 		</div>
 			
 		<div id="footer">
-			<p>Annuaire des anciens élèves du BTS Informatique - Lycée De La Salle (Rennes)</p>
+			<p>Annuaire des anciens étudiants du BTS Informatique - Pôle Sup De La Salle (Rennes)</p>
 		</div>		
 	</div>
 	

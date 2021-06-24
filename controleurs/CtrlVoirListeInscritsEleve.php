@@ -21,11 +21,11 @@ if ($nombreInscrits == 0 )
 }
 
 elseif ($nombreInscrits == 1) {
-	$titre = $nombreInscrits . " inscrit à la prochaine soirée des anciens :";
+	$titre = $nombreInscrits . " inscription à la prochaine soirée des anciens :";
 }
 
 else{
-	$titre = $nombreInscrits . " inscrits à la prochaine soirée des anciens :";
+	$titre = $nombreInscrits . " inscriptions à la prochaine soirée des anciens :";
 }
 
 include_once ($cheminDesVues . 'VueVoirListeInscritsEleve.php');

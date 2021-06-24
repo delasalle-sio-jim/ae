@@ -74,7 +74,7 @@ header('Expires: 0');
 		
 				<div class="ui-widget">
 
-					 <label for="listeEleves">Eleves: </label>
+					 <label for="listeEleves">Etudiant: </label>
  					 <input type="email" id="listeEleves"  value="<?php if($etape == 1 ) echo $uneAdrMail; else echo ''; ?>" name="listeEleves" required pattern="^.+@.+\..+$" placeholder="Recherchez à l'aide de l'email de l'utilisateur">
 
 					<input type="submit" name="btnDetail" id="btnDetail" value="Obtenir les détails">	

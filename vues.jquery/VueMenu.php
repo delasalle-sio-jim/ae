@@ -98,11 +98,11 @@
 						-->
 							
 						<div data-role="collapsible" >
-							<h3>Gérer les comptes élèves...</h3>
+							<h3>Gérer les comptes étudiants...</h3>
 							<ul data-role="listview" data-inset="true">
-								<li><a href="index.php?action=CreerCompteEleve" data-mini="true" data-role="button" data-ajax="false" data-transition="<?php echo $transition; ?>">Créer un compte élève</a></li>
-								<li><a href="index.php?action=ModifierCompteEleve" data-mini="true" data-role="button" data-ajax="false" data-transition="<?php echo $transition; ?>">Modifier un compte élève</a></li>
-								<li><a href="index.php?action=SupprimerCompteEleve" data-mini="true" data-role="button" data-ajax="false" data-transition="<?php echo $transition; ?>">Supprimer un compte élève</a></li>
+								<li><a href="index.php?action=CreerCompteEleve" data-mini="true" data-role="button" data-ajax="false" data-transition="<?php echo $transition; ?>">Créer un compte étudiant</a></li>
+								<li><a href="index.php?action=ModifierCompteEleve" data-mini="true" data-role="button" data-ajax="false" data-transition="<?php echo $transition; ?>">Modifier un compte étudiant</a></li>
+								<li><a href="index.php?action=SupprimerCompteEleve" data-mini="true" data-role="button" data-ajax="false" data-transition="<?php echo $transition; ?>">Supprimer un compte étudiant</a></li>
 							</ul>
 						</div>
 						
