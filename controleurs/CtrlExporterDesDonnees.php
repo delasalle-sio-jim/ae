@@ -82,10 +82,10 @@ if ( isset ($_POST ["btnPDF"]) ) {
     $pdf->Cell(35,10,iconv("UTF-8", "CP1252", "     Payé ?"),1,1);
     foreach($lesInscriptions AS $uneInscription)
     {   
-        $unNom = $uneInscription->getNom();
-        $unPrenom = $uneInscription->getPrenom();
+        $unNom = utf8_decode($uneInscription->getNom());
+        $unPrenom = utf8_decode($uneInscription->getPrenom());
         $unNbrePersonnes = $uneInscription->getNbrePersonnes();
-        $unMontant = $uneInscription->getTarif();
+        $unMontant = $uneInscription->getTarif() * $unNbrePersonnes;
         if (strlen($unNom)<=15)
         {
             $pdf->SetFont('Arial','',16);
